@@ -1,7 +1,7 @@
-class InfluencersController < ApplicationController
+class UsersController < ApplicationController
 
   def index
-    @influencers = Influencer.all
+    @users = User.all
   end
 
   def new
