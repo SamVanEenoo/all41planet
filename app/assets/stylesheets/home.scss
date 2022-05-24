@@ -89,6 +89,12 @@ $projects-color-hover: #d689d1;
     color: #FFF;
 }
 
+#companies table td,
+#influencers table td,
+#projects table td {
+  padding-bottom: 15px;
+}
+
 a .company:hover {
     background: $enterpreneurs-color-hover;
 }
