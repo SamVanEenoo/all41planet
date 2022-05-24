@@ -5,6 +5,11 @@
     <tbody>
       <%= form_for @user, controller: 'users', action:'create' do |f| %>
         <tr>
+          <td colspan="2">
+            <h4>Personal data</h4>
+          </td>
+        </tr>
+        <tr>
           <td><%= f.label :first_name %></td>
           <td><%= f.text_field :first_name %></td>
         </tr>
@@ -20,6 +25,60 @@
           <td><%= f.label :password_confirmation %></td>
           <td><%= f.password_field :password_confirmation %></td>
         </tr>
+        <tr>
+          <td><%= f.label :avatar %></td>
+          <td><%= f.file_field :avatar %></td>
+        </tr>
+        <% if params[:company] %>
+          <tr>
+            <td colspan="2">
+              <h4 class="margin-top-md">Company data</h4>
+            </td>
+          </tr>
+          <%= f.fields_for :company do |c| %>
+            <tr>
+              <td><%= c.label :company_name %></td>
+              <td><%= c.text_field :name %></td>
+            </tr>
+            <tr>
+              <td><%= c.label :vat_number %></td>
+              <td><%= c.text_field :vat_number %></td>
+            </tr>
+            <tr>
+              <td><%= c.label :company_website %></td>
+              <td><%= c.text_field :website %></td>
+            </tr>
+            <tr>
+              <td><%= c.label :company_logo %></td>
+              <td><%= c.file_field :avatar %></td>
+            </tr>
+          <% end %>
+        <% end %>
+        <% if params[:project] %>
+          <tr>
+            <td colspan="2">
+              <h4 class="margin-top-md">Project data</h4>
+            </td>
+          </tr>
+          <%= f.fields_for :project do |pr| %>
+            <tr>
+              <td><%= pr.label :project_name %></td>
+              <td><%= pr.text_field :name %></td>
+            </tr>
+            <tr>
+              <td><%= pr.label :description %></td>
+              <td><%= pr.text_area :description %></td>
+            </tr>
+            <tr>
+              <td><%= pr.label :project_website %></td>
+              <td><%= pr.text_field :website %></td>
+            </tr>
+            <tr>
+              <td><%= pr.label :project_logo %></td>
+              <td><%= pr.file_field :avatar %></td>
+            </tr>
+          <% end %>
+        <% end %>
         <tr>
           <td></td>
           <td><%= f.submit "Registreer", class:"btn btn-primary" %></td>
