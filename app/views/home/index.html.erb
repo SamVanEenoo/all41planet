@@ -12,18 +12,18 @@
       <table>
         <tr>
           <td><div class="image"><img src="https://media-exp1.licdn.com/dms/image/C4D0BAQFyvnowthnfJQ/company-logo_200_200/0/1607441534777?e=2159024400&v=beta&t=NsLl0AniRT7a3w5UXDf4OTDbkgxAC28LS3PQnNt3pJ4" /></div></td>
-          <td class="width-100"><div class="name">Fintrax</div></td>
+          <td class="width-100"><div class="name">Sam Van Eenoo<br /><em>Fintrax</em></div></td>
         </tr>
       </table>
 
       <a href="/companies">
-        <div class="company padding-sm margin-bottom-sm text-center">
+        <div class="company padding-sm margin-bottom-sm margin-top-sm text-center">
           Alle Ondernemers
         </div>
       </a>
 
       <div class="text-center">
-        <%= link_to "All41Planet ondernemer worden?", new_user_path %>
+        <%= link_to "All41Planet ondernemer worden?", new_user_path("company": true) %>
       </div>
     </div>
 
@@ -40,14 +40,14 @@
           <tr>
             <td><div class="image"><img src="https://app.fintrax.io/img/sam.png" /></div></td>
             <td class="width-100">
-              <div class="name"><%= user["name"] %></div>
+              <div class="name"><%= user["first_name"] %> <%= user["last_name"] %></div>
             </td>
           </tr>
         <% end -%>
       </table>
 
       <a href="/influencers">
-        <div class="influencer padding-sm margin-bottom-sm text-center">
+        <div class="influencer padding-sm margin-bottom-sm margin-top-sm text-center">
           Alle influencers
         </div>
       </a>
@@ -76,13 +76,13 @@
       </table>
 
       <a href="/projects">
-        <div class="project padding-sm margin-bottom-sm text-center">
+        <div class="project padding-sm margin-bottom-sm margin-top-sm text-center">
           Alle Projecten
         </div>
       </a>
 
       <div class="text-center">
-        <%= link_to "All41Planet projectaanvraag indienen?", new_user_path %>
+        <%= link_to "All41Planet projectaanvraag indienen?", new_user_path("project": true) %>
       </div>
     </div>
 

@@ -3,8 +3,11 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 $enterpreneurs-color: #7997BD;
+$enterpreneurs-color-hover: #89aad6;
 $influencers-color: #70bc66;
+$influencers-color-hover: #7fd674;
 $projects-color: #bd79b9;
+$projects-color-hover: #d689d1;
 
 #logo {
   height: 80px;
@@ -84,6 +87,18 @@ $projects-color: #bd79b9;
 
 .company, .influencer, .project {
     color: #FFF;
+}
+
+a .company:hover {
+    background: $enterpreneurs-color-hover;
+}
+
+a .influencer:hover {
+  background: $influencers-color-hover;
+}
+
+a .project:hover  {
+  background: $projects-color-hover;
 }
 
 #companies {
