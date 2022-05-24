@@ -82,20 +82,31 @@ $projects-color: #bd79b9;
   flex-direction: column;
 }
 
-#companies .name {
-  background: $enterpreneurs-color;
-  color: #FFF;
+.company, .influencer, .project {
+    color: #FFF;
 }
 
-#influencers .name {
-  background: $influencers-color;
-  color: #FFF;
+#companies {
+  .name {
+    color: #FFF;
+    background: $enterpreneurs-color;
+  }
 }
 
-#projects .name {
-  background: $projects-color;
-  color: #FFF;
+#influencers {
+  .name {
+    color: #FFF;
+    background: $influencers-color;
+  }
 }
+
+#projects {
+  .name {
+    color: #FFF;
+    background: $projects-color;
+  }
+}
+
 
 
 

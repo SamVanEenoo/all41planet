@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2022_05_23_184719) do
     t.text "avatar"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "image_data"
   end
 
 end
