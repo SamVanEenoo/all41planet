@@ -33,7 +33,7 @@ html {
 body {
   background: #f7f7f7;
   color: #333;
-  padding: 60px 0;
+  padding: 0 0 60px 0;
   font-family: "Flexo";
 }
 
@@ -119,4 +119,8 @@ h2 {
 
 .borderless td, .borderless th {
     border: none;
+}
+
+.text-right {
+  text-align: right;
 }

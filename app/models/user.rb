@@ -1,4 +1,3 @@
 class User < ApplicationRecord
-  belongs_to :company
-  belongs_to :projects
+  has_secure_password
 end
