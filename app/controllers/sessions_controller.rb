@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     else
       message = "Something went wrong!"
       flash[:alert] = message
-      redirect_to login_sessions_path
+      redirect_to login_sessions_path, turbolinks: false
     end
   end
 
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 
   def logout
     session.delete(:user_id)
-    redirect_to login_sessions_path
+    redirect_to login_sessions_path, turbolinks: false
   end
 
 end

@@ -20,8 +20,20 @@
           <%= link_to image_tag("all41planet_logo.png", id:"logo"), "/" %>
         </div>
         <div class="col-4 text-right">
-
-
+          <% if current_user %>
+            <button class="btn">
+              <%= current_user["first_name"] %> <%= current_user["last_name"] %>
+            </button>
+            <a href="/sessions/logout">
+              <button class="btn btn-secondary">
+                Logout
+              </button>
+            </a>
+          <% else %>
+            <% unless @login_page %>
+            <a href="/sessions/login"><button class="btn btn-secondary">Login</button></a>
+            <% end -%>
+          <% end %>
         </div>
       </div>
     </div>
