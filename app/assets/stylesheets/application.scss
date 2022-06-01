@@ -14,8 +14,6 @@
  *= require_self
  */
 
-@import 'bootstrap';
-
 @font-face {
    font-family: 'Flexo';
    src: url('Flexo-Regular.ttf');
@@ -26,12 +24,15 @@
    src: url('Flexo-Bold.ttf');
 }
 
+
+@import 'bootstrap';
+
 html {
   height: 100%;
 }
 
 body {
-  background: #f7f7f7;
+  background: #EEE;
   color: #333;
   padding: 0 0 60px 0;
   font-family: "Flexo";

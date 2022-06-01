@@ -20,12 +20,17 @@
           <%= link_to image_tag("all41planet_logo.png", id:"logo"), "/" %>
         </div>
         <div class="col-4 text-right">
-          <% if current_user %>
-            <button class="btn btn-secondary text-right" disabled><%= current_user["first_name"] %> <%= current_user["last_name"] %></button>
-          <% end %>
+
+
         </div>
       </div>
     </div>
+
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-info">
+        <%= msg %>
+      </div>
+    <% end %>
 
     <div class="container">
       <div class="row">
@@ -34,5 +39,7 @@
         </div>
       </div>
     </div>
+
+
   </body>
 </html>
