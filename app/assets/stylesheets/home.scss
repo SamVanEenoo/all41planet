@@ -4,10 +4,10 @@
 
 $enterpreneurs-color: #7997BD;
 $enterpreneurs-color-hover: #89aad6;
-$influencers-color: #70bc66;
-$influencers-color-hover: #7fd674;
-$projects-color: #bd79b9;
-$projects-color-hover: #d689d1;
+$projects-color: #70bc66;
+$projects-color-hover: #7fd674;
+$influencers-color: #bd79b9;
+$influencers-color-hover: #d689d1;
 
 #logo {
   height: 60px;
@@ -39,23 +39,19 @@ $projects-color-hover: #d689d1;
 
 .company {
   background: $enterpreneurs-color;
-  border-radius: 4px;
 }
 
 .influencer {
   background: $influencers-color;
-  border-radius: 4px;
 }
 
 .project {
   background: $projects-color;
-  border-radius: 4px;
 }
 
 .target {
   background: rgba(0,0,0,0.36);
   padding: 15px;
-  border-radius: 4px;
 }
 
 .row-special {
@@ -72,12 +68,11 @@ $projects-color-hover: #d689d1;
 .image img {
   width: 100px;
   height: 100px;
-  border-radius: 4px;
+    box-shadow: 0 0 2px 0 #777;
 }
 
 .name {
   padding: 15px;
-  border-radius: 4px;
   width: 100%;
   height: 100px;
   display: flex;

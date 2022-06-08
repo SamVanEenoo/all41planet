@@ -12,9 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require cropperjs/dist/cropper.css
  */
-
-@import 'bootstrap';
 
 @font-face {
    font-family: 'Flexo';
@@ -26,12 +25,15 @@
    src: url('Flexo-Bold.ttf');
 }
 
+
+@import 'bootstrap';
+
 html {
   height: 100%;
 }
 
 body {
-  background: #f7f7f7;
+  background: #EEE;
   color: #333;
   padding: 0 0 60px 0;
   font-family: "Flexo";
@@ -124,3 +126,18 @@ h2 {
 .text-right {
   text-align: right;
 }
+
+.sign-up-section  {
+  box-shadow: 0 0 2px 0 #CCC;
+  padding: 15px;
+  margin-bottom: 15px;
+
+  .table {
+    margin-bottom: 0;
+  }
+
+  h4 {
+    margin-bottom: 0;
+  }
+}
+

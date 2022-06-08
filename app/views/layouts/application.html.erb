@@ -21,11 +21,28 @@
         </div>
         <div class="col-4 text-right">
           <% if current_user %>
-            <button class="btn btn-secondary text-right" disabled><%= current_user["first_name"] %> <%= current_user["last_name"] %></button>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= current_user["first_name"] %> <%= current_user["last_name"] %>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="/sessions/logout">Logout</a></li>
+              </ul>
+            </div>
+          <% else %>
+            <% unless @login_page %>
+            <a href="/sessions/login"><button class="btn btn-secondary">Login</button></a>
+            <% end -%>
           <% end %>
         </div>
       </div>
     </div>
+
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-info">
+        <%= msg %>
+      </div>
+    <% end %>
 
     <div class="container">
       <div class="row">
@@ -34,5 +51,10 @@
         </div>
       </div>
     </div>
+
+<script>
+  $('.dropdown-toggle').dropdown()
+</script>
+
   </body>
 </html>

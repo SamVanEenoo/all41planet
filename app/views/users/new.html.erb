@@ -1,44 +1,89 @@
 <div id="sign-up">
-<h2 class="text-center">Registreer</h2>
-<hr />
-  <table class="table borderless">
-    <tbody>
-      <%= form_for @user, controller: 'users', action:'create' do |f| %>
-        <tr>
-          <td colspan="2">
-            <h4>Personal data</h4>
-          </td>
-        </tr>
-        <tr>
-          <td class="col-6"><%= f.label :first_name %></td>
-          <td class="col-6"><%= f.text_field :first_name %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :last_name %></td>
-          <td><%= f.text_field :last_name %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :password %></td>
-          <td><%= f.password_field :password %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :password_confirmation %></td>
-          <td><%= f.password_field :password_confirmation %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :avatar %></td>
-          <td><%= f.file_field :avatar %></td>
-        </tr>
-        <% if params[:company] %>
+<h2 class="text-center margin-bottom-md margin-top-sm">Registreer</h2>
+
+  <%= form_for @user, controller: 'users', action:'create' do |f| %>
+    <div class="sign-up-section">
+      <table class="table borderless">
+        <thead>
           <tr>
-            <td colspan="2">
-              <h4 class="margin-top-md">Company data</h4>
+            <th colspan="2">
+              <h4>Personal data</h4>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-6"><%= f.label :first_name %></td>
+            <td class="col-6"><%= f.text_field :first_name %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :last_name %></td>
+            <td><%= f.text_field :last_name %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :email %></td>
+            <td><%= f.text_field :email %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :password %></td>
+            <td><%= f.password_field :password %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :password_confirmation %></td>
+            <td><%= f.password_field :password_confirmation %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :avatar %></td>
+            <td><%= f.file_field :avatar, id: :avatar, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <% if !f.object.image.present? %>
+                <span class="fa fa-file fa-6x place-holder-image"></span>
+                <%= image_tag '', id: :avatar_preview %>
+              <%else%>
+                <%= image_tag f.object.image_url(:thumb), id: :avatar_preview %>
+              <% end %>
             </td>
           </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sign-up-section ">
+      <table class="table borderless">
+        <thead id="company-header">
+          <tr>
+            <th colspan="2">
+              <h4>
+
+                <span id="company-chevron-right" <% if params[:company] %>class="d-none"<% end %>>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                  </svg>
+                </span>
+
+                <span id="company-chevron-down" <% unless params[:company] %>class="d-none"<% end %>>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                  </svg>
+                </span>
+                Company data
+              </h4>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="company-body" <% unless params[:company] %>class="d-none"<% end %>>
           <%= f.fields_for :company do |c| %>
+            <% if params[:company] %>
+              <%= c.hidden_field "show_company", id:"show_company", value: true %>
+            <% else %>
+              <%= c.hidden_field "show_company", id:"show_company", value: false %>
+            <% end -%>
             <tr>
-              <td><%= c.label :company_name %></td>
-              <td><%= c.text_field :name %></td>
+              <td class="col-6"><%= c.label :company_name %></td>
+              <td class="col-6"><%= c.text_field :name %></td>
             </tr>
             <tr>
               <td><%= c.label :vat_number %></td>
@@ -50,20 +95,58 @@
             </tr>
             <tr>
               <td><%= c.label :company_logo %></td>
-              <td><%= c.file_field :avatar %></td>
+              <td><%= c.file_field :company_logo, id: :company_logo, class: "form-control" %></td>
             </tr>
-          <% end %>
-        <% end %>
-        <% if params[:project] %>
-          <tr>
-            <td colspan="2">
-              <h4 class="margin-top-md">Project data</h4>
-            </td>
-          </tr>
-          <%= f.fields_for :project do |pr| %>
             <tr>
-              <td><%= pr.label :project_name %></td>
-              <td><%= pr.text_field :name %></td>
+              <td></td>
+              <td>
+                <% if !f.object.image.present? %>
+                  <span class="fa fa-file fa-6x place-holer-image"></span>
+                  <%= image_tag '', id: :company_logo_preview %>
+                <%else%>
+                  <%= image_tag c.object.image_url(:thumb), id: :company_logo_preview %>
+                <% end %>
+              </td>
+            </tr>
+            <% %w[x y w h].each do |attribute| %>
+              <%= c.hidden_field "company_logo_crop_#{attribute}", id:"company_logo_crop_#{attribute}" %>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sign-up-section ">
+      <table class="table borderless">
+        <thead id="project-header">
+          <tr>
+            <th colspan="2">
+              <h4>
+                <span id="project-chevron-right" <% if params[:project] %>class="d-none"<% end %>>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                  </svg>
+                </span>
+                <span id="project-chevron-down" <% unless params[:project] %>class="d-none"<% end %>>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                  </svg>
+                </span>
+                Project data
+              </h4>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="project-body" <% unless params[:project] %>class="d-none"<% end %>>
+          <%= f.fields_for :project do |pr| %>
+            <% if params[:project] %>
+              <%= pr.hidden_field "show_project", id:"show_project", value: true %>
+            <% else %>
+              <%= pr.hidden_field "show_project", id:"show_project", value: false %>
+            <% end -%>
+            <tr>
+              <td class="col-6"><%= pr.label :project_name %></td>
+              <td class="col-6"><%= pr.text_field :name %></td>
             </tr>
             <tr>
               <td><%= pr.label :description %></td>
@@ -75,15 +158,224 @@
             </tr>
             <tr>
               <td><%= pr.label :project_logo %></td>
-              <td><%= pr.file_field :avatar %></td>
+              <td><%= pr.file_field :project_logo, id: :project_logo, class: "form-control" %></td>
             </tr>
+            <tr>
+              <td></td>
+              <td>
+                <% if !f.object.image.present? %>
+                  <span class="fa fa-file fa-6x place-holer-image"></span>
+                  <%= image_tag '', id: :project_logo_preview %>
+                <%else%>
+                  <%= image_tag c.object.image_url(:thumb), id: :project_logo_preview %>
+                <% end %>
+              </td>
+            </tr>
+            <% %w[x y w h].each do |attribute| %>
+              <%= pr.hidden_field "project_logo_crop_#{attribute}", id:"project_logo_crop_#{attribute}" %>
+            <% end %>
           <% end %>
-        <% end %>
+          <% %w[x y w h].each do |attribute| %>
+            <%= f.hidden_field "avatar_crop_#{attribute}", id:"avatar_crop_#{attribute}" %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+
+    <table class="table borderless">
+      <tbody>
         <tr>
-          <td></td>
-          <td><%= f.submit "Registreer", class:"btn btn-primary" %></td>
+          <td class="col-6"></td>
+          <td class="col-6"><%= f.submit "Registreer", class:"btn btn-primary" %></td>
         </tr>
-      <% end -%>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  <% end -%>
 </div>
+
+
+
+<div class="modal fade" id="upload-modal" aria-labelledby="modalLabel" role="dialog" tabindex="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Crop Image</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <img id="image" width="100%" src="" alt="Logo">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <input type="button" class="btn btn-primary" id="CropButton" value="Opslaan" data-dismiss="modal"></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+$avatar = false
+$company_logo = false
+$project_logo = false
+
+$("#avatar").change(function () {
+    console.log("AVATAR CHANGE")
+  $avatar = true
+  $('#upload-modal').modal('show');
+  $preview = $('#avatar_preview')[0];
+  readURL(this);
+});
+
+
+$("#company_logo").change(function () {
+    console.log("COMPANY CHANGE")
+  $company_logo = true
+  $('#upload-modal').modal('show');
+  $preview = $('#company_logo_preview')[0];
+  readURL(this);
+});
+
+
+$("#project_logo").change(function () {
+    console.log("PROJECT CHANGE")
+  $project_logo = true
+  $('#upload-modal').modal('show');
+  $preview = $('#project_logo_preview')[0];
+  readURL(this);
+});
+
+function crop_image_load(data) {
+  console.log("CROPPING")
+  data = data.detail;
+  if($avatar){
+    console.log("AVATAR")
+    var $crop_x = $("input#avatar_crop_x")[0],
+    $crop_y = $("input#avatar_crop_y")[0],
+    $crop_w = $("input#avatar_crop_w")[0],
+    $crop_h = $("input#avatar_crop_h")[0];
+    $crop_x.value = data.x;
+    $crop_y.value = data.y;
+    $crop_h.value = data.height;
+    $crop_w.value = data.width;
+  }else if($company_logo){
+    console.log("COMPANY")
+    var $crop_x = $("input#company_logo_crop_x")[0],
+    $crop_y = $("input#company_logo_crop_y")[0],
+    $crop_w = $("input#company_logo_crop_w")[0],
+    $crop_h = $("input#company_logo_crop_h")[0];
+    $crop_x.value = data.x;
+    $crop_y.value = data.y;
+    $crop_h.value = data.height;
+    $crop_w.value = data.width;
+  }else if($project_logo){
+    console.log("PROJECT")
+    var $crop_x = $("input#project_logo_crop_x")[0],
+    $crop_y = $("input#project_logo_crop_y")[0],
+    $crop_w = $("input#project_logo_crop_w")[0],
+    $crop_h = $("input#project_logo_crop_h")[0];
+    $crop_x.value = data.x;
+    $crop_y.value = data.y;
+    $crop_h.value = data.height;
+    $crop_w.value = data.width;
+  }
+
+}
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $('#image').attr('src', e.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+var $image = "";
+var $image = $('#image');
+var $button = $('#CropButton');
+var croppable = false;
+let x;
+
+$('#upload-modal').on('shown.bs.modal', function () {
+  x = $image.cropper({
+    aspectRatio: 1,
+    viewMode: 2,
+    dragMode: 'move',
+    ready: function () {
+      croppable = true;
+    },
+    crop: function (event) {
+      crop_image_load(event)
+    }
+  });
+}).on('hidden.bs.modal', function () {
+  x.cropper("destroy");
+});
+
+
+
+
+$button.on('click', function () {
+  var croppedCanvas;
+
+  croppedCanvas = x.cropper("getCroppedCanvas");
+  $preview.src = croppedCanvas.toDataURL();
+  $preview.setAttribute("height", "100");
+  $preview.setAttribute("width", "100");
+
+  $avatar = false
+  $company_logo = false
+  $project_logo = false
+});
+
+
+
+
+
+
+
+$("#company-header").on('click', function () {
+  $("#company-body").toggle();
+  $("#company-body").removeClass("d-none");
+  $("#company-chevron-down").toggle();
+  $("#company-chevron-right").toggle();
+  $("#company-chevron-down").removeClass("d-none");
+  $("#company-chevron-right").removeClass("d-none");
+  show_company = $("#show_company").val()
+  if(show_company == "true"){
+    show_company = false
+    $("#show_company").val(show_company)
+  }else{
+    show_company = true
+    $("#show_company").val(show_company)
+  }
+});
+
+$("#project-header").on('click', function () {
+  $("#project-body").toggle();
+  $("#project-body").removeClass("d-none");
+  $("#project-chevron-down").toggle();
+  $("#project-chevron-right").toggle();
+  $("#project-chevron-down").removeClass("d-none");
+  $("#project-chevron-right").removeClass("d-none");
+  show_project = $("#show_project").val()
+  if(show_project == "true"){
+    show_project = false
+    $("#show_project").val(show_project)
+  }else{
+    show_project = true
+    $("#show_project").val(show_project)
+  }
+});
+</script>
+
+
+
