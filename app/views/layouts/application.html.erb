@@ -21,14 +21,14 @@
         </div>
         <div class="col-4 text-right">
           <% if current_user %>
-            <button class="btn">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               <%= current_user["first_name"] %> <%= current_user["last_name"] %>
-            </button>
-            <a href="/sessions/logout">
-              <button class="btn btn-secondary">
-                Logout
               </button>
-            </a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="/sessions/logout">Logout</a></li>
+              </ul>
+            </div>
           <% else %>
             <% unless @login_page %>
             <a href="/sessions/login"><button class="btn btn-secondary">Login</button></a>
@@ -52,6 +52,9 @@
       </div>
     </div>
 
+<script>
+  $('.dropdown-toggle').dropdown()
+</script>
 
   </body>
 </html>

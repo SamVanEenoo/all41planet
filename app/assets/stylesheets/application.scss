@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require cropperjs/dist/cropper.css
  */
 
 @font-face {
@@ -125,3 +126,18 @@ h2 {
 .text-right {
   text-align: right;
 }
+
+.sign-up-section  {
+  box-shadow: 0 0 2px 0 #CCC;
+  padding: 15px;
+  margin-bottom: 15px;
+
+  .table {
+    margin-bottom: 0;
+  }
+
+  h4 {
+    margin-bottom: 0;
+  }
+}
+
