@@ -1,0 +1,21 @@
+<div id="home">
+<div class="row">
+
+  <!-- INFLUENCERS -->
+  <div id="projects" class="col-12 margin-bottom-lg">
+    <table>
+      <% @projects.each do |project| %>
+        <tr>
+          <td><div class="image"><%= image_tag project.avatar %></div></td>
+          <td class="width-100">
+            <div class="name"><%= project["name"] %></div>
+          </td>
+        </tr>
+      <% end -%>
+    </table>
+  </div>
+
+
+
+</div>
+</div>

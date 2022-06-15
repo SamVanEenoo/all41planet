@@ -15,45 +15,51 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    img = ImageProcessing::MiniMagick.source(user_params[:avatar].path())
-    avatar = img.crop("#{params[:user][:avatar_crop_w]}x#{params[:user][:avatar_crop_h]}+#{params[:user][:avatar_crop_x]}+#{params[:user][:avatar_crop_y]}")
-          .resize_to_limit!(100, 100)
-    @user.avatar.attach(io: avatar, filename: "#{user_params[:first_name]}_#{user_params[:last_name]}.png", content_type: "image/png")
-
-
-    if @user.save
-      session[:user_id] = @user.id
-
-      if company_params
-        if company_params["show_company"] == "true"
-          @company = Company.new(company_params)
-          img = ImageProcessing::MiniMagick.source(company_params[:company_logo].path())
-          avatar = img.crop("#{params[:user][:company][:company_logo_crop_w]}x#{params[:user][:company][:company_logo_crop_h]}+#{params[:user][:company][:company_logo_crop_x]}+#{params[:user][:company][:company_logo_crop_y]}")
+    if !user_params[:avatar].nil?
+      img = ImageProcessing::MiniMagick.source(user_params[:avatar].path())
+      avatar = img.crop("#{params[:user][:avatar_crop_w]}x#{params[:user][:avatar_crop_h]}+#{params[:user][:avatar_crop_x]}+#{params[:user][:avatar_crop_y]}")
             .resize_to_limit!(100, 100)
-          @company.avatar.attach(io: avatar, filename: "#{params[:user][:company][:name]}.png", content_type: "image/png")
-          @company.save
-          company_user = CompanyUser.new(company_id:@company.id,user_id:@user.id)
-          company_user.save
+      @user.avatar.attach(io: avatar, filename: "#{user_params[:first_name]}_#{user_params[:last_name]}.png", content_type: "image/png")
+
+
+      if @user.save
+        session[:user_id] = @user.id
+
+        if company_params
+          if company_params["show_company"] == "true"
+            @company = Company.new(company_params)
+            img = ImageProcessing::MiniMagick.source(company_params[:company_logo].path())
+            avatar = img.crop("#{params[:user][:company][:company_logo_crop_w]}x#{params[:user][:company][:company_logo_crop_h]}+#{params[:user][:company][:company_logo_crop_x]}+#{params[:user][:company][:company_logo_crop_y]}")
+              .resize_to_limit!(100, 100)
+            @company.avatar.attach(io: avatar, filename: "#{params[:user][:company][:name]}.png", content_type: "image/png")
+            @company.save
+            company_user = CompanyUser.new(company_id:@company.id,user_id:@user.id)
+            company_user.save
+          end
         end
-      end
 
-      if project_params
-        if project_params["show_project"] == "true"
-          @project = Project.new(project_params)
-          img = ImageProcessing::MiniMagick.source(project_params[:project_logo].path())
-          avatar = img.crop("#{params[:user][:project][:project_logo_crop_w]}x#{params[:user][:project][:project_logo_crop_h]}+#{params[:user][:project][:project_logo_crop_x]}+#{params[:user][:project][:project_logo_crop_y]}")
-            .resize_to_limit!(100, 100)
-          @project.avatar.attach(io: avatar, filename: "#{params[:user][:project][:name]}.png", content_type: "image/png")
-          @project.save
-          project_user = ProjectUser.new(project_id:@project.id,user_id:@user.id)
-          project_user.save
+        if project_params
+          if project_params["show_project"] == "true"
+            @project = Project.new(project_params)
+            img = ImageProcessing::MiniMagick.source(project_params[:project_logo].path())
+            avatar = img.crop("#{params[:user][:project][:project_logo_crop_w]}x#{params[:user][:project][:project_logo_crop_h]}+#{params[:user][:project][:project_logo_crop_x]}+#{params[:user][:project][:project_logo_crop_y]}")
+              .resize_to_limit!(100, 100)
+            @project.avatar.attach(io: avatar, filename: "#{params[:user][:project][:name]}.png", content_type: "image/png")
+            @project.save
+            project_user = ProjectUser.new(project_id:@project.id,user_id:@user.id)
+            project_user.save
+          end
         end
+
+        redirect_to root_path
+
+      else
+        flash[:alert] = "Please make sure everything is filled in correctly."
+        render :new
       end
-
-      redirect_to root_path
-
     else
-      render :new, notice: "Something went wrong"
+      flash[:alert] = "A valid profile picture is required."
+      render :new
     end
   end
 
@@ -66,6 +72,18 @@ class UsersController < ApplicationController
       @user.update(user_params)
       format.html { redirect_to root_path }
     end
+  end
+
+  def influencers
+    @influencers = User.all
+  end
+
+  def enterpreneurs
+    @enterpreneurs = CompanyUser.all
+  end
+
+  def projects
+    @projects = Project.all
   end
 
   def sanitize_fields_params
