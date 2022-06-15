@@ -12,5 +12,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get "influencers", to: 'users#influencers'
+  get "enterpreneurs", to: 'users#enterpreneurs'
+  get "projects", to: 'users#projects'
+
   root "home#index"
 end
