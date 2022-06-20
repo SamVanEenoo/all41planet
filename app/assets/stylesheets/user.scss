@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+$enterpreneurs-color: #7997BD;
+$enterpreneurs-color-hover: #89aad6;
+$projects-color: #70bc66;
+$projects-color-hover: #7fd674;
+$influencers-color: #bd79b9;
+$influencers-color-hover: #d689d1;
+
 #sign-up {
   width: 800px;
   margin-left:auto;
@@ -10,4 +17,157 @@
   border-radius: 4px;
   padding: 15px;
   box-shadow: 0 0 4px 0 #AAA;
+}
+
+#companies {
+  .pagination {
+    background: transparent;
+    cursor: default;
+    justify-content: center;
+    /* self-clearing method: */ }
+    .pagination a, .pagination span, .pagination em {
+      padding: 0.2em 0.5em;
+      display: block;
+      float: left;
+      margin-right: 1px; }
+    .pagination .disabled {
+      color: #999999;
+      border: 1px solid #dddddd; }
+    .pagination .current {
+      font-style: normal;
+      font-weight: bold;
+      background: $enterpreneurs-color;
+      color: white;
+      border: 1px solid $enterpreneurs-color; }
+    .pagination a {
+      text-decoration: none;
+      color: $enterpreneurs-color;
+      border: 1px solid $enterpreneurs-color; }
+      .pagination a:hover, .pagination a:focus {
+        color: #000033;
+        border-color: #000033; }
+    .pagination .page_info {
+      background: $enterpreneurs-color;
+      color: white;
+      padding: 0.4em 0.6em;
+      width: 22em;
+      margin-bottom: 0.3em;
+      text-align: center; }
+      .pagination .page_info b {
+        color: #000033;
+        background: #6aa6ed;
+        padding: 0.1em 0.25em; }
+    .pagination:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden; }
+    * html .pagination {
+      height: 1%; }
+    *:first-child + html .pagination {
+      overflow: hidden;
+  }
+}
+
+#influencers {
+  .pagination {
+    background: transparent;
+    cursor: default;
+    justify-content: center;
+    /* self-clearing method: */ }
+    .pagination a, .pagination span, .pagination em {
+      padding: 0.2em 0.5em;
+      display: block;
+      float: left;
+      margin-right: 1px; }
+    .pagination .disabled {
+      color: #999999;
+      border: 1px solid #dddddd; }
+    .pagination .current {
+      font-style: normal;
+      font-weight: bold;
+      background: $influencers-color;
+      color: white;
+      border: 1px solid $influencers-color; }
+    .pagination a {
+      text-decoration: none;
+      color: $influencers-color;
+      border: 1px solid $influencers-color; }
+      .pagination a:hover, .pagination a:focus {
+        color: #000033;
+        border-color: #000033; }
+    .pagination .page_info {
+      background: $influencers-color;
+      color: white;
+      padding: 0.4em 0.6em;
+      width: 22em;
+      margin-bottom: 0.3em;
+      text-align: center; }
+      .pagination .page_info b {
+        color: #000033;
+        background: #6aa6ed;
+        padding: 0.1em 0.25em; }
+    .pagination:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden; }
+    * html .pagination {
+      height: 1%; }
+    *:first-child + html .pagination {
+      overflow: hidden;
+  }
+}
+
+#projects {
+  .pagination {
+    background: transparent;
+    cursor: default;
+    justify-content: center;
+    /* self-clearing method: */ }
+    .pagination a, .pagination span, .pagination em {
+      padding: 0.2em 0.5em;
+      display: block;
+      float: left;
+      margin-right: 1px; }
+    .pagination .disabled {
+      color: #999999;
+      border: 1px solid #dddddd; }
+    .pagination .current {
+      font-style: normal;
+      font-weight: bold;
+      background: $projects-color;
+      color: white;
+      border: 1px solid $projects-color; }
+    .pagination a {
+      text-decoration: none;
+      color: $projects-color;
+      border: 1px solid $projects-color; }
+      .pagination a:hover, .pagination a:focus {
+        color: #000033;
+        border-color: #000033; }
+    .pagination .page_info {
+      background: $projects-color;
+      color: white;
+      padding: 0.4em 0.6em;
+      width: 22em;
+      margin-bottom: 0.3em;
+      text-align: center; }
+      .pagination .page_info b {
+        color: #000033;
+        background: #6aa6ed;
+        padding: 0.1em 0.25em; }
+    .pagination:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden; }
+    * html .pagination {
+      height: 1%; }
+    *:first-child + html .pagination {
+      overflow: hidden;
+  }
 }

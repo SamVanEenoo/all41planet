@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get "lists", to:"home#lists"
+  get "feed", to:"home#feed"
   get "influencers", to: 'users#influencers'
   get "enterpreneurs", to: 'users#enterpreneurs'
   get "projects", to: 'users#projects'

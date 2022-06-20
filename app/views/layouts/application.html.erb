@@ -22,6 +22,21 @@
       </div>
     <% end %>
 
+    <% if current_user %>
+    <div id="main-nav">
+      <a href="/">
+        <div class="main-nav-item">
+          <%= image_tag("home.png", id:"home") %>
+        </div>
+      </a>
+      <a href="/lists">
+        <div class="main-nav-item">
+          <%= image_tag("lists.png", id:"feed") %>
+        </div>
+      </a>
+    </div>
+    <% end %>
+
     <div class="container margin-bottom-lg margin-top-md">
       <div class="row">
         <div class="col-4">
@@ -30,15 +45,20 @@
           <%= link_to image_tag("all41planet_logo.png", id:"logo"), "/" %>
         </div>
         <div class="col-4 text-right">
-          <% if current_user %>
-            <div class="dropdown">
+          <% if @current_user %>
+            <span class="points">
+              <button class="btn btn-primary">
+                123 PP
+              </button>
+            </span>
+            <span class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               <%= current_user["first_name"] %> <%= current_user["last_name"] %>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="/sessions/logout">Logout</a></li>
               </ul>
-            </div>
+            </span>
           <% else %>
             <% unless @login_page %>
             <a href="/sessions/login"><button class="btn btn-secondary">Login</button></a>
@@ -58,7 +78,13 @@
     </div>
 
 <script>
-  $('.dropdown-toggle').dropdown()
+$('.dropdown-toggle').dropdown()
+
+$('.main-nav-item').click(function() {
+  $('.main-nav-item').removeClass("active");
+  $(this).addClass("active");
+})
+
 </script>
 
   </body>

@@ -75,15 +75,15 @@ class UsersController < ApplicationController
   end
 
   def influencers
-    @influencers = User.all
+    @influencers = User.paginate(page: params[:page], per_page: 20)
   end
 
   def enterpreneurs
-    @enterpreneurs = CompanyUser.all
+    @enterpreneurs = CompanyUser.paginate(page: params[:page], per_page: 20)
   end
 
   def projects
-    @projects = Project.all
+    @projects = Project.paginate(page: params[:page], per_page: 20)
   end
 
   def sanitize_fields_params

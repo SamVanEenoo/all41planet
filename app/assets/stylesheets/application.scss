@@ -15,6 +15,13 @@
  *= require cropperjs/dist/cropper.css
  */
 
+$enterpreneurs-color: #7997BD;
+$enterpreneurs-color-hover: #89aad6;
+$projects-color: #70bc66;
+$projects-color-hover: #7fd674;
+$influencers-color: #bd79b9;
+$influencers-color-hover: #d689d1;
+
 @font-face {
    font-family: 'Flexo';
    src: url('Flexo-Regular.ttf');
@@ -141,3 +148,44 @@ h2 {
   }
 }
 
+// main nav
+
+#main-nav {
+  position: fixed;
+  width: 50px;
+  background-color: #777;
+  top: 0;
+  left:0;
+  bottom: 0;
+
+  div {
+    padding: 10px 0;
+    text-align:center;
+    border-left: 3px solid #777;
+  }
+
+  div.active, div:hover {
+    border-left: 3px solid #FFF;
+  }
+
+  a {
+    color: #FFF;
+  }
+
+  img {
+    width: 25px;
+    margin-left: -4px;
+  }
+}
+
+// bootstrap changes
+
+.btn-primary {
+  background-color: $influencers-color;
+  border-color: $influencers-color;
+}
+
+.btn-primary:hover {
+    background-color: $influencers-color-hover;
+    border-color: $influencers-color-hover;
+}
