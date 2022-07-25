@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>All41planetRuby7</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.1.0/cropper.min.css" integrity="sha512-vmXqikRa5kmI3gOQygzml5nV+5NGxG8rt8KWHKj8JYYK12JUl2L8RBfWinFGTzvpwwsIRcINy9mhLyodnmzjig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="min-height-100">
+
+
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <div class="container">
+          <%= msg %>
+          <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+    <% end %>
+
+    <% if current_user %>
+    <div id="main-nav">
+      <a href="/">
+        <div class="main-nav-item <%= active_class('/articles') %>">
+          <%= image_tag("home.png", id:"home") %>
+        </div>
+      </a>
+      <a href="/lists">
+        <div class="main-nav-item <%= active_class('/lists') %>">
+          <%= image_tag("lists.png", id:"lists") %>
+        </div>
+      </a>
+    </div>
+    <% end %>
+
+    <div class="container margin-bottom-lg margin-top-md">
+      <div class="row">
+        <div class="col-4">
+        </div>
+        <div class="col-4 text-center">
+          <%= link_to image_tag("all41planet_logo.png", id:"logo"), "/" %>
+        </div>
+        <div class="col-4 text-right">
+          <% if @current_user %>
+            <span class="points">
+              <button class="btn btn-primary">
+                123 PP
+              </button>
+            </span>
+            <span class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= current_user["first_name"] %> <%= current_user["last_name"] %>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="/sessions/logout">Logout</a></li>
+              </ul>
+            </span>
+          <% else %>
+            <% unless @login_page %>
+            <a href="/sessions/login"><button class="btn btn-secondary">Login</button></a>
+            <% end -%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12 margin-bottom-lg">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

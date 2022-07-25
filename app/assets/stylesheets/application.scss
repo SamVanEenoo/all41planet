@@ -1,0 +1,190 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+@import "font-awesome";
+
+$enterpreneurs-color: #7997BD;
+$enterpreneurs-color-hover: #89aad6;
+$projects-color: #70bc66;
+$projects-color-hover: #7fd674;
+$influencers-color: #bd79b9;
+$influencers-color-hover: #d689d1;
+
+@font-face {
+   font-family: 'Flexo';
+   src: url('Flexo-Regular.ttf');
+}
+
+@font-face {
+   font-family: 'Flexo-Bold';
+   src: url('Flexo-Bold.ttf');
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background: #EEE;
+  color: #333;
+  padding: 0 0 60px 0;
+  font-family: "Flexo";
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #000;
+}
+
+h3 {
+  margin-bottom: 0px;
+  margin-top: 5px;
+  color: #fff;
+  font-family: "Flexo-Bold";
+}
+
+h2 {
+  font-family: "Flexo-Bold";
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.margin-top-15 {
+  margin-top: 15px;
+}
+
+.padding-xs {
+  padding: 5px;
+}
+
+.padding-sm {
+  padding: 15px;
+}
+
+.padding-md {
+  padding: 30px;
+}
+
+.margin-bottom-xs {
+  margin-bottom: 5px;
+}
+
+.margin-bottom-sm {
+  margin-bottom: 15px;
+}
+
+.margin-bottom-md {
+  margin-bottom: 30px;
+}
+
+.margin-bottom-lg {
+  margin-bottom: 45px;
+}
+
+.margin-bottom-xl {
+  margin-bottom: 60px;
+}
+
+.margin-top-xs {
+  margin-top: 5px;
+}
+
+.margin-top-sm {
+  margin-top: 15px;
+}
+
+.margin-top-md {
+  margin-top: 30px;
+}
+
+.margin-top-lg {
+  margin-top: 45px;
+}
+
+.margin-top-xl {
+  margin-top: 60px;
+}
+
+.borderless td, .borderless th {
+    border: none;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.sign-up-section {
+  box-shadow: 0 0 2px 0 #CCC;
+  padding: 15px;
+  margin-bottom: 15px;
+
+  .table {
+    margin-bottom: 0;
+  }
+
+  h4 {
+    margin-bottom: 0;
+  }
+}
+
+// main nav
+
+#main-nav {
+  position: fixed;
+  width: 50px;
+  background-color: #777;
+  top: 0;
+  left:0;
+  bottom: 0;
+
+  div {
+    padding: 10px 0;
+    text-align:center;
+    border-left: 3px solid #777;
+  }
+
+  div.active, div:hover {
+    border-left: 3px solid #FFF;
+  }
+
+  a {
+    color: #FFF;
+  }
+
+  img {
+    width: 25px;
+    margin-left: -4px;
+  }
+}
+
+// bootstrap changes
+
+.btn-primary {
+  background-color: $influencers-color;
+  border-color: $influencers-color;
+}
+
+.btn-primary:hover {
+    background-color: $influencers-color-hover;
+    border-color: $influencers-color-hover;
+}

@@ -1,0 +1,39 @@
+<div class="articles">
+  <div class="article">
+    <div class="title">
+      <%= link_to @article.title, @article %>
+    </div>
+    <div class="date">
+      <%= @article.created_at.strftime("%D %H:%M") %>
+    </div>
+    <div class="body">
+      <%= @article.body %>
+    </div>
+    <div class="likes-and-comments">
+      <%= turbo_frame_tag "like_#{@article.id}" do %>
+        <%= render "likes", article: @article %>
+      <% end -%>
+      <%= fa_icon "comment", :class => "comment-icon" %> <%= @article.comments.count %>
+    </div>
+  </div>
+
+  <h2>Comments</h2>
+  <% @article.comments.each do |comment| %>
+    <div class="comment">
+      <%= comment.body %>
+    </div>
+  <% end %>
+
+  <div class="comment">
+    Add a comment:
+    <%= form_with model: [ @article, @article.comments.build ] do |form| %>
+      <p>
+        <%= form.text_area :body, :class => "form-control" %>
+      </p>
+      <p>
+        <%= form.submit "Verzenden", :class => "btn btn-secondary" %>
+      </p>
+    <% end %>
+  </div>
+
+</div>

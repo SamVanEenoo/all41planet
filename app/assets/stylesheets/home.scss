@@ -1,0 +1,130 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+$enterpreneurs-color: #7997BD;
+$enterpreneurs-color-hover: #89aad6;
+$projects-color: #70bc66;
+$projects-color-hover: #7fd674;
+$influencers-color: #bd79b9;
+$influencers-color-hover: #d689d1;
+
+#logo {
+  height: 60px;
+  margin-left: 20px;
+}
+
+.content-wrapper {
+  display: flex; /* or inline-flex */
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 30px 60px;
+  align-content: center;
+  height: 100%;
+  flex-wrap: wrap;
+}
+
+.category {
+  flex: 1 1 0;
+  position: relative;
+}
+
+.min-height-100 {
+  height: 100%;
+}
+
+#logo-wrapper {
+  width: 100%;
+}
+
+.company {
+  background: $enterpreneurs-color;
+}
+
+.influencer {
+  background: $influencers-color;
+}
+
+.project {
+  background: $projects-color;
+}
+
+.target {
+  background: rgba(0,0,0,0.36);
+  padding: 15px;
+}
+
+.row-special {
+  margin-left: -60px;
+  margin-right: -60px;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  margin-right: 15px;
+  background-color: #FFF;
+}
+
+.image img {
+  width: 100px;
+  height: 100px;
+    box-shadow: 0 0 2px 0 #777;
+}
+
+.name {
+  padding: 15px;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.company, .influencer, .project {
+    color: #FFF;
+}
+
+#companies table td,
+#influencers table td,
+#projects table td {
+  padding-bottom: 15px;
+}
+
+a .company:hover {
+    background: $enterpreneurs-color-hover;
+}
+
+a .influencer:hover {
+  background: $influencers-color-hover;
+}
+
+a .project:hover  {
+  background: $projects-color-hover;
+}
+
+#companies {
+  .name {
+    color: #FFF;
+    background: $enterpreneurs-color;
+  }
+}
+
+#influencers {
+  .name {
+    color: #FFF;
+    background: $influencers-color;
+  }
+}
+
+#projects {
+  .name {
+    color: #FFF;
+    background: $projects-color;
+  }
+}
+
+
+
+
