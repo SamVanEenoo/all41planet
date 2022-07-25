@@ -21,5 +21,12 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  # <<: *default
+  adapter: postgresql
+  encoding: unicode
+  database: all41planet
+  pool: 5
+  username: samvaneenoo
+  password: VOS1lXasXRwF6I6DRO2cESjDsizMcmM0
+  timeout: 5000
+
