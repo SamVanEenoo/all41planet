@@ -38,6 +38,7 @@ gem 'will_paginate-bootstrap5'
 gem "font-awesome-sass", "~> 6.1.1"
 gem "shrine", "~> 3.0"
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
+gem 'pg'
 
 
 # Use Redis adapter to run Action Cable in production
