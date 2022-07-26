@@ -1,8 +1,6 @@
 require "image_processing/mini_magick"
-  puts "ImageUploader TEST"
 
 class ImageUploader < Shrine
-  puts "ImageUploader TEST"
   include MiniMagick
   Attacher.validate do
     # You can add your image validations here ..

@@ -13,8 +13,7 @@
       <%= turbo_frame_tag "like_#{@article.id}" do %>
         <%= render "likes", article: @article %>
       <% end -%>
-      <%= fa_icon "comment", :class => "comment-icon" %> <%= @article.comments.count %>
-    </div>
+      <i class="fa-solid fa-comment commenct-icon"></i> <%= @article.comments.count %></div>
   </div>
 
   <h2>Comments</h2>
