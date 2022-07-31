@@ -36,6 +36,7 @@ gem "font-awesome-sass", "~> 6.1.1"
 gem "shrine", "~> 3.0"
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
 gem 'pg'
+gem 'aws-sdk-s3'
 
 
 # Use Redis adapter to run Action Cable in production
