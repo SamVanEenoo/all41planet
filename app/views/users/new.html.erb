@@ -40,7 +40,7 @@
             <td></td>
             <td>
               <% if !f.object.image.present? %>
-                <span class="fa fa-file fa-6x place-holder-image"></span>
+                <span class="fa fa-file place-holder-image"></span>
                 <%= image_tag '', id: :avatar_preview %>
               <%else%>
                 <%= image_tag f.object.image_url(:thumb), id: :avatar_preview %>
@@ -101,7 +101,7 @@
               <td></td>
               <td>
                 <% if !f.object.image.present? %>
-                  <span class="fa fa-file fa-6x place-holer-image"></span>
+                  <span class="fa fa-file place-holer-image"></span>
                   <%= image_tag '', id: :company_logo_preview %>
                 <%else%>
                   <%= image_tag c.object.image_url(:thumb), id: :company_logo_preview %>
@@ -164,7 +164,7 @@
               <td></td>
               <td>
                 <% if !f.object.image.present? %>
-                  <span class="fa fa-file fa-6x place-holer-image"></span>
+                  <span class="fa fa-file place-holer-image"></span>
                   <%= image_tag '', id: :project_logo_preview %>
                 <%else%>
                   <%= image_tag c.object.image_url(:thumb), id: :project_logo_preview %>
