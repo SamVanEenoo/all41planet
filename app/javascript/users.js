@@ -23,15 +23,16 @@ var myModal = new bootstrap.Modal(document.getElementById('upload-modal'), {
 
   $("#company_logo").change(function () {
     $company_logo = true
-    $('#upload-modal').modal({backdrop: 'static', keyboard: false});
+    myModal.show()
     $preview = $('#company_logo_preview')[0];
     readURL(this);
+    // $('#upload-modal').modal({backdrop: 'static', keyboard: false});
   });
 
 
   $("#project_logo").change(function () {
     $project_logo = true
-    $('#upload-modal').modal({backdrop: 'static', keyboard: false});
+    myModal.show()
     $preview = $('#project_logo_preview')[0];
     readURL(this);
   });
