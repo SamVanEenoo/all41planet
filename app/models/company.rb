@@ -9,5 +9,5 @@ class Company < ApplicationRecord
                 :company_logo_crop_h,
                 :company_logo_crop_w
 
-  #include ImageUploader::Attachment(:image)
+  include ImageUploader::Attachment(:image)
 end

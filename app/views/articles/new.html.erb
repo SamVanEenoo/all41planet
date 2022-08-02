@@ -1,0 +1,33 @@
+<div id="sign-up">
+<%= form_for @article, controller: "articles" do |f| %>
+  <div class="sign-up-section">
+    <table class="table borderless">
+      <thead>
+        <tr>
+          <th colspan="2">
+            <h4>Nieuw artikel</h4>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-6"><%= f.label :Title %></td>
+          <td class="col-6"><%= f.text_field :title, autofocus: true, placeholder:"Titel" %></td>
+        </tr>
+        <tr>
+          <td class="col-6"><%= f.label :Image %></td>
+          <td class="col-6"><%= f.file_field :image_data %></td>
+        </tr>
+        <tr>
+          <td class="col-6"><%= f.label :Body %></td>
+          <td class="col-6"><%= f.text_area :body, placeholder:"Body" %></td>
+        </tr>
+        <tr>
+          <td class="col-6"></td>
+          <td class="col-6"><%= f.submit "Registreer", class:"btn btn-primary" %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<% end -%>
+</div>

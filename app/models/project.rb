@@ -9,5 +9,5 @@ class Project < ApplicationRecord
                 :project_logo_crop_h,
                 :project_logo_crop_w
 
-  #include ImageUploader::Attachment(:image)
+  include ImageUploader::Attachment(:image)
 end

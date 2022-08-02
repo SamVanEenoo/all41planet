@@ -7,7 +7,8 @@
       <%= @article.created_at.strftime("%D %H:%M") %>
     </div>
     <div class="body">
-      <%= @article.body %>
+      <%= image_tag @article.image_data, class:"article-image" %>
+      <%= simple_format(@article.body) %>
     </div>
     <div class="likes-and-comments">
       <%= turbo_frame_tag "like_#{@article.id}" do %>
