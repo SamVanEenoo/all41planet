@@ -7,7 +7,7 @@
       <%= @article.created_at.strftime("%D %H:%M") %>
     </div>
     <div class="body">
-      <% if article.image_data.attached? %>
+      <% if @article.image_data.attached? %>
         <%= image_tag article.image_data, class:"article-image" %>
       <% end %>
       <%= simple_format(@article.body) %>
