@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
     <meta name="turbo-visit-control" content="reload">
 
+    <link rel="icon" type="image/x-icon" href=<%= image_url("favicon.ico") %>>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.1.0/cropper.min.css" integrity="sha512-vmXqikRa5kmI3gOQygzml5nV+5NGxG8rt8KWHKj8JYYK12JUl2L8RBfWinFGTzvpwwsIRcINy9mhLyodnmzjig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <%= javascript_importmap_tags %>
@@ -41,12 +42,12 @@
 
     <div class="container margin-bottom-lg margin-top-md">
       <div class="row">
-        <div class="order-xs-2 col-sm-12 order-sm-2 col-md-4 order-md-1">
+        <div class="order-2 col-sm-12 order-sm-2 col-md-12 col-lg-4 order-md-1">
         </div>
-        <div class="order-xs-3 col-sm-12 order-sm-3 push-sm-12 col-md-4 order-md-2 text-center">
+        <div class="order-3 col-sm-12 order-sm-3 push-sm-12 col-md-6 col-lg-4 order-md-2 text-center">
           <%= link_to image_tag("all41planet_logo.png", id:"logo"), "/" %>
         </div>
-        <div class="order-xs-1 col-sm-12 order-sm-1 col-md-4 order-md-3 text-right">
+        <div id="userButtons" class="order-1 col-sm-12 order-sm-1 col-md-6 col-lg-4 order-md-3 text-right">
           <% if @current_user %>
             <span class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
