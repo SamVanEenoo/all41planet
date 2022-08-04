@@ -41,12 +41,12 @@
 
     <div class="container margin-bottom-lg margin-top-md">
       <div class="row">
-        <div class="col-4">
+        <div class="col-sm-12 order-sm-2 col-md-4">
         </div>
-        <div class="col-4 text-center">
+        <div class="col-sm-12 order-sm-3 push-sm-12 col-md-4 text-center">
           <%= link_to image_tag("all41planet_logo.png", id:"logo"), "/" %>
         </div>
-        <div class="col-4 text-right">
+        <div class="col-sm-12 order-sm-1 col-md-4 text-right">
           <% if @current_user %>
             <span class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -58,6 +58,9 @@
             </span>
           <% else %>
             <% unless @login_page %>
+            <a href="/users/new">
+              <button class="btn btn-primary">Registreer</button>
+            </a>
             <a href="/sessions/login"><button class="btn btn-secondary">Login</button></a>
             <% end -%>
           <% end %>
