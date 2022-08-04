@@ -2,8 +2,11 @@
 import Cropper from 'cropperjs';
 
 var myModal = new bootstrap.Modal(document.getElementById('upload-modal'), {
-  keyboard: false
+  keyboard: false,
+  backdrop: 'static'
 })
+
+
 
 var $avatar = false
 var $company_logo = false
@@ -12,7 +15,6 @@ var $preview;
 
 $("#avatar").change(function () {
   $avatar = true
-  // $('#upload-modal').show();
   myModal.show()
   $preview = $('#avatar_preview')[0];
   readURL(this);
@@ -24,12 +26,15 @@ $("#company_logo").change(function () {
   myModal.show()
   $preview = $('#company_logo_preview')[0];
   readURL(this);
-  // $('#upload-modal').modal({backdrop: 'static', keyboard: false});
 });
 
 
 $("#project_logo").change(function () {
   $project_logo = true
+  $("#upload-modal").modal({
+    backdrop: 'static',
+    keyboard: false
+  });
   myModal.show()
   $preview = $('#project_logo_preview')[0];
   readURL(this);
@@ -92,7 +97,7 @@ $('#upload-modal').on('shown.bs.modal', function () {
 
   cropper = new Cropper(image, {
     aspectRatio: 1,
-    viewMode: 2,
+    viewMode: 0,
     dragMode: 'move',
     ready: function () {
       croppable = true;
@@ -187,4 +192,5 @@ $("#project-header").on('click', function () {
     $("project_logo").attr("required", true);
   }
 });
+
 
