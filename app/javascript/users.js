@@ -130,7 +130,7 @@ if(uploadModal){
 
 
   var show_company = $("#show_company").val()
-  if(show_company == "true"){
+  if(show_company == "true" || show_company == true){
     $("#company_name").attr("required", true);
     $("company_vat_number").attr("required", true);
     $("company_website").attr("required", true);
@@ -138,7 +138,7 @@ if(uploadModal){
   }
 
   var show_project = $("#show_project").val()
-  if(show_project == "true"){
+  if(show_project == "true" || show_project == true){
     $("#project_name ").attr("required", true);
     $("project_description").attr("required", true);
     $("project_website").attr("required", true);
@@ -153,7 +153,7 @@ if(uploadModal){
     $("#company-chevron-down").removeClass("d-none");
     $("#company-chevron-right").removeClass("d-none");
     show_company = $("#show_company").val()
-    if(show_company == "true"){
+    if(show_company == "true" || show_company == true){
       show_company = false
       $("#show_company").val(show_company)
       $("#company_name").attr("required", false);
@@ -178,7 +178,7 @@ if(uploadModal){
     $("#project-chevron-down").removeClass("d-none");
     $("#project-chevron-right").removeClass("d-none");
     show_project = $("#show_project").val()
-    if(show_project == "true"){
+    if(show_project == "true" || show_project == true){
       show_project = false
       $("#show_project").val(show_project)
       $("#project_name ").attr("required", false);
@@ -196,5 +196,9 @@ if(uploadModal){
   });
 
 }
+
+$(".close-flash-alert").on('click', function () {
+  $("#flash-alert").hide();
+});
 
 

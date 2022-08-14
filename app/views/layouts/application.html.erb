@@ -17,10 +17,10 @@
 
 
     <% flash.each do |type, msg| %>
-      <div class="alert alert-info alert-dismissible fade show" role="alert">
+      <div id="flash-alert" class="alert alert-info alert-dismissible fade show fixed-top" role="alert">
         <div class="container">
           <%= msg %>
-          <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+          <button type="button" class="btn-close close-flash-alert" data-dismiss="alert" aria-label="Close"></button>
         </div>
       </div>
     <% end %>

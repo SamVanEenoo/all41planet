@@ -12,13 +12,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(first_name: params[:user][:first_name], last_name: params[:user][:last_name], email: params[:user][:email], password: params[:user][:password])
 
-    if !user_params[:avatar].nil?
-      img = ImageProcessing::MiniMagick.source(user_params[:avatar].path())
+    if !params[:user][:avatar].nil?
+      img = ImageProcessing::MiniMagick.source(params[:user][:avatar].path())
       avatar = img.crop("#{params[:user][:avatar_crop_w]}x#{params[:user][:avatar_crop_h]}+#{params[:user][:avatar_crop_x]}+#{params[:user][:avatar_crop_y]}")
             .resize_to_limit!(100, 100)
-      @user.avatar.attach(io: avatar, filename: "#{user_params[:first_name]}_#{user_params[:last_name]}.png", content_type: "image/png")
+      @user.avatar.attach(io: avatar, filename: "#{params[:user][:first_name]}_#{params[:user][:last_name]}.png", content_type: "image/png")
 
 
       if @user.save
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
         end
 
         if project_params
-          if project_params["show_project"] == "true"
+          if !!project_params["show_project"] == "true"
             @project = Project.new(project_params)
             img = ImageProcessing::MiniMagick.source(project_params[:project_logo].path())
             avatar = img.crop("#{params[:user][:project][:project_logo_crop_w]}x#{params[:user][:project][:project_logo_crop_h]}+#{params[:user][:project][:project_logo_crop_x]}+#{params[:user][:project][:project_logo_crop_y]}")
@@ -53,12 +53,12 @@ class UsersController < ApplicationController
         redirect_to root_path
 
       else
-        flash[:alert] = "Please make sure everything is filled in correctly."
-        render :new
+        flash.now[:alert] = "Please make sure everything is filled in correctly."
+        render :new, status: "Error"
       end
     else
-      flash[:alert] = "A valid profile picture is required."
-      render :new
+      flash.now[:alert] = "A valid profile picture is required."
+      render :new, status: "Error"
     end
   end
 
@@ -95,19 +95,15 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name,:last_name,:email,:password,:password_confirmation,:avatar,:image,:logo_crop_x,:logo_crop_y,:logo_crop_h,:logo_crop_w)
+    params.require(:user).permit(:first_name,:last_name,:email,:password,:password_confirmation,:avatar,:image, :company, :project, :avatar_crop_x, :avatar_crop_y, :avatar_crop_w, :avatar_crop_h)
   end
 
   def company_params
-    if params[:user][:company]
-      params.require(:user).require(:company).permit(:name,:vat_number,:website,:company_logo,:show_company)
-    end
+    params.require(:user).require(:company).permit(:name,:vat_number,:website,:company_logo,:show_company)
   end
 
   def project_params
-    if params[:user][:project]
-      params.require(:user).require(:project).permit(:name,:description,:website,:project_logo,:show_project)
-    end
+    params.require(:user).require(:project).permit(:name,:description,:website,:project_logo,:show_project)
   end
 
 end
