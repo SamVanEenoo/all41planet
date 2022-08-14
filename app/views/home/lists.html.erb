@@ -14,7 +14,7 @@
       <tr>
         <td>
           <div class="image">
-            <% if !company_user.company.avatar.image_data.nil? %>
+            <% if !company_user.company.avatar.nil? %>
               <%= image_tag company_user.company.avatar %>
             <% else %>
               <img src="https://media-exp1.licdn.com/dms/image/C4D0BAQFyvnowthnfJQ/company-logo_200_200/0/1607441534777?e=2159024400&v=beta&t=NsLl0AniRT7a3w5UXDf4OTDbkgxAC28LS3PQnNt3pJ4" />
@@ -84,7 +84,7 @@
         <td>
           <div class="image">
 
-            <% if !project.avatar.image_data.nil? %>
+            <% if !project.avatar.nil? %>
               <%= image_tag project.avatar %>
             <% else %>
               <img src="https://www.natuurpunt.be/sites/all/themes/ntpweb_theme/logo.png" />
