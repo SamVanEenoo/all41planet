@@ -104,10 +104,38 @@ a .project:hover  {
   background: $projects-color-hover;
 }
 
+.quote {
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+  padding: 30px 15px;
+}
+
 #companies {
   .name {
     color: #FFF;
     background: $enterpreneurs-color;
+  }
+
+  .title {
+    color: $enterpreneurs-color;
+    margin-bottom: 15px;
+  }
+
+  .body {
+    margin-bottom: 15px;
+  }
+
+  .link {
+    margin-bottom: 30px;
+
+    a {
+      color: $enterpreneurs-color;
+    }
+
+    a:hover {
+      color: $enterpreneurs-color-hover;
+    }
   }
 }
 
@@ -116,6 +144,27 @@ a .project:hover  {
     color: #FFF;
     background: $influencers-color;
   }
+
+  .title {
+    color: $influencers-color;
+    margin-bottom: 15px;
+  }
+
+  .body {
+    margin-bottom: 15px;
+  }
+
+  .link {
+    margin-bottom: 30px;
+
+    a {
+      color: $influencers-color;
+    }
+
+    a:hover {
+      color: $influencers-color-hover;
+    }
+  }
 }
 
 #projects {
@@ -123,8 +172,29 @@ a .project:hover  {
     color: #FFF;
     background: $projects-color;
   }
+
+  .title {
+    color: $projects-color;
+    margin-bottom: 15px;
+  }
+
+  .body {
+    margin-bottom: 15px;
+  }
+
+  .link {
+    margin-bottom: 30px;
+
+    a {
+      color: $projects-color;
+    }
+
+    a:hover {
+      color: $projects-color-hover;
+    }
+  }
 }
 
-
-
-
+.group-icon {
+  width: 100%;
+}
