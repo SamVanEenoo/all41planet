@@ -16,26 +16,37 @@
       <%= turbo_frame_tag "like_#{@article.id}" do %>
         <%= render "likes", article: @article %>
       <% end -%>
-      <i class="fa-solid fa-comment commenct-icon"></i> <%= @article.comments.count %></div>
+      <i class="fa-solid fa-comment commenct-icon"></i> <%= @article.comments.count %>
+    </div>
+    <% unless current_user %>
+      <div>
+        <a class="highlight" href="/sessions/login">Log in</a> of <a class="highlight" href="/users/new">registreer</a> om een artikel te liken.
+      </div>
+    <% end %>
   </div>
 
   <h2>Comments</h2>
+
+  <div class="comment">
+    <% if current_user %>
+      Add a comment:
+      <%= form_with model: [ @article, @article.comments.build ] do |form| %>
+        <p>
+          <%= form.text_area :body, :class => "form-control" %>
+        </p>
+        <p>
+          <%= form.submit "Verzenden", :class => "btn btn-secondary" %>
+        </p>
+      <% end %>
+    <% else %>
+      <a class="highlight" href="/sessions/login">Log in</a> of <a class="highlight" href="/users/new">registreer</a> om een reactie na te laten.
+    <% end %>
+  </div>
+
+
   <% @article.comments.each do |comment| %>
     <div class="comment">
       <%= comment.body %>
     </div>
   <% end %>
-
-  <div class="comment">
-    Add a comment:
-    <%= form_with model: [ @article, @article.comments.build ] do |form| %>
-      <p>
-        <%= form.text_area :body, :class => "form-control" %>
-      </p>
-      <p>
-        <%= form.submit "Verzenden", :class => "btn btn-secondary" %>
-      </p>
-    <% end %>
-  </div>
-
 </div>

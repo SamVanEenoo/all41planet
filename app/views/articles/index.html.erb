@@ -21,6 +21,11 @@
         <i class="fa-solid fa-comment commenct-icon"></i> <%= article.comments.count %>
       <% end -%>
     </div>
+    <% unless current_user %>
+      <div>
+        <a class="highlight" href="/sessions/login">Log in</a> of <a class="highlight" href="/users/new">registreer</a> om een artikel te liken.
+      </div>
+    <% end %>
   </div>
 <% end -%>
 </div>

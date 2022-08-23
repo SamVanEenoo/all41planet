@@ -14,8 +14,6 @@
   </head>
 
   <body class="min-height-100">
-
-
     <% flash.each do |type, msg| %>
       <div id="flash-alert" class="alert alert-info alert-dismissible fade show fixed-top" role="alert">
         <div class="container">
@@ -27,13 +25,18 @@
 
     <div id="main-nav">
       <a href="/">
-        <div class="main-nav-item <%= active_class('/articles') %>">
+        <div class="main-nav-item <%= active_class('/') %>">
           <%= image_tag("home.png", id:"home") %>
         </div>
       </a>
       <a href="/lists">
         <div class="main-nav-item <%= active_class('/lists') %>">
           <%= image_tag("lists.png", id:"lists") %>
+        </div>
+      </a>
+      <a href="/articles">
+        <div class="main-nav-item <%= active_class('/articles') %>">
+          <%= image_tag("articles-icon.png", id:"lists") %>
         </div>
       </a>
     </div>
@@ -46,7 +49,7 @@
           <%= link_to image_tag("all41planet_logo.png", id:"logo"), "/" %>
         </div>
         <div id="userButtons" class="order-1 col-sm-12 order-sm-1 col-md-6 col-lg-4 order-md-3 text-right">
-          <% if @current_user %>
+          <% if current_user %>
             <span class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               <%= current_user["first_name"] %> <%= current_user["last_name"] %>
@@ -72,6 +75,15 @@
       <div class="row">
         <div class="col-12 margin-bottom-lg">
           <%= yield %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12 margin-bottom-lg text-center">
+          &copy; 2022 - All 4 1 planet
         </div>
       </div>
     </div>

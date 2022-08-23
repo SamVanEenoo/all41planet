@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "like_#{article.id}" do %>
   <%= link_to article_likes_path(article) do |f| %>
-    <% if article.liked_by_user?(current_user) %>
+    <% if current_user && article.liked_by_user?(current_user) %>
       <i class="fa-solid fa-heart like-icon"></i>
     <% else %>
       <i class="fa-regular fa-heart like-icon"></i>
