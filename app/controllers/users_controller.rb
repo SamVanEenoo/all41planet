@@ -15,45 +15,53 @@ class UsersController < ApplicationController
     @user = User.new(first_name: params[:user][:first_name], last_name: params[:user][:last_name], email: params[:user][:email], password: params[:user][:password])
 
     if !params[:user][:avatar].nil?
-      img = ImageProcessing::MiniMagick.source(params[:user][:avatar].path())
-      avatar = img.crop("#{params[:user][:avatar_crop_w]}x#{params[:user][:avatar_crop_h]}+#{params[:user][:avatar_crop_x]}+#{params[:user][:avatar_crop_y]}")
-            .resize_to_limit!(100, 100)
-      @user.avatar.attach(io: avatar, filename: "#{params[:user][:first_name]}_#{params[:user][:last_name]}.png", content_type: "image/png")
-
-
-      if @user.save
-        session[:user_id] = @user.id
-
-        if company_params
-          if company_params["show_company"] == "true"
-            @company = Company.new(company_params)
-            img = ImageProcessing::MiniMagick.source(company_params[:company_logo].path())
-            avatar = img.crop("#{params[:user][:company][:company_logo_crop_w]}x#{params[:user][:company][:company_logo_crop_h]}+#{params[:user][:company][:company_logo_crop_x]}+#{params[:user][:company][:company_logo_crop_y]}")
+      accepted_formats = [".jpg",".jpeg",".png"]
+      if accepted_formats.include?(File.extname(params[:user][:avatar]))
+        img = ImageProcessing::MiniMagick.source(params[:user][:avatar].path())
+        puts "img extension: #{img.extension}"
+        throw "foo"
+        avatar = img.crop("#{params[:user][:avatar_crop_w]}x#{params[:user][:avatar_crop_h]}+#{params[:user][:avatar_crop_x]}+#{params[:user][:avatar_crop_y]}")
               .resize_to_limit!(100, 100)
-            @company.avatar.attach(io: avatar, filename: "#{params[:user][:company][:name]}.png", content_type: "image/png")
-            @company.save
-            company_user = CompanyUser.new(company_id:@company.id,user_id:@user.id)
-            company_user.save
+        @user.avatar.attach(io: avatar, filename: "#{params[:user][:first_name]}_#{params[:user][:last_name]}.png", content_type: "image/png")
+
+
+        if @user.save
+          session[:user_id] = @user.id
+
+          if company_params
+            if company_params["show_company"] == "true"
+              @company = Company.new(company_params)
+              img = ImageProcessing::MiniMagick.source(company_params[:company_logo].path())
+              avatar = img.crop("#{params[:user][:company][:company_logo_crop_w]}x#{params[:user][:company][:company_logo_crop_h]}+#{params[:user][:company][:company_logo_crop_x]}+#{params[:user][:company][:company_logo_crop_y]}")
+                .resize_to_limit!(100, 100)
+              @company.avatar.attach(io: avatar, filename: "#{params[:user][:company][:name]}.png", content_type: "image/png")
+              @company.save
+              company_user = CompanyUser.new(company_id:@company.id,user_id:@user.id)
+              company_user.save
+            end
           end
-        end
 
-        if project_params
-          if !!project_params["show_project"] == "true"
-            @project = Project.new(project_params)
-            img = ImageProcessing::MiniMagick.source(project_params[:project_logo].path())
-            avatar = img.crop("#{params[:user][:project][:project_logo_crop_w]}x#{params[:user][:project][:project_logo_crop_h]}+#{params[:user][:project][:project_logo_crop_x]}+#{params[:user][:project][:project_logo_crop_y]}")
-              .resize_to_limit!(100, 100)
-            @project.avatar.attach(io: avatar, filename: "#{params[:user][:project][:name]}.png", content_type: "image/png")
-            @project.save
-            project_user = ProjectUser.new(project_id:@project.id,user_id:@user.id)
-            project_user.save
+          if project_params
+            if !!project_params["show_project"] == "true"
+              @project = Project.new(project_params)
+              img = ImageProcessing::MiniMagick.source(project_params[:project_logo].path())
+              avatar = img.crop("#{params[:user][:project][:project_logo_crop_w]}x#{params[:user][:project][:project_logo_crop_h]}+#{params[:user][:project][:project_logo_crop_x]}+#{params[:user][:project][:project_logo_crop_y]}")
+                .resize_to_limit!(100, 100)
+              @project.avatar.attach(io: avatar, filename: "#{params[:user][:project][:name]}.png", content_type: "image/png")
+              @project.save
+              project_user = ProjectUser.new(project_id:@project.id,user_id:@user.id)
+              project_user.save
+            end
           end
+
+          redirect_to root_path
+
+        else
+          flash.now[:alert] = "Please make sure everything is filled in correctly."
+          render :new, status: "Error"
         end
-
-        redirect_to root_path
-
       else
-        flash.now[:alert] = "Please make sure everything is filled in correctly."
+        flash.now[:alert] = "Only images with an jpg, jpeg or png extension are accepted."
         render :new, status: "Error"
       end
     else
