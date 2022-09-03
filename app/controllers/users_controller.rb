@@ -12,14 +12,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(first_name: params[:user][:first_name], last_name: params[:user][:last_name], email: params[:user][:email], password: params[:user][:password])
+    @user = User.new(user_params)
 
     if !params[:user][:avatar].nil?
       accepted_formats = [".jpg",".jpeg",".png"]
       if accepted_formats.include?(File.extname(params[:user][:avatar]))
         img = ImageProcessing::MiniMagick.source(params[:user][:avatar].path())
-        puts "img extension: #{img.extension}"
-        throw "foo"
         avatar = img.crop("#{params[:user][:avatar_crop_w]}x#{params[:user][:avatar_crop_h]}+#{params[:user][:avatar_crop_x]}+#{params[:user][:avatar_crop_y]}")
               .resize_to_limit!(100, 100)
         @user.avatar.attach(io: avatar, filename: "#{params[:user][:first_name]}_#{params[:user][:last_name]}.png", content_type: "image/png")
@@ -57,16 +55,16 @@ class UsersController < ApplicationController
           redirect_to root_path
 
         else
-          flash.now[:alert] = "Please make sure everything is filled in correctly."
-          render :new, status: "Error"
+          flash.now[:alert] = "Your passwords don't match. Please try again."
+          render :new
         end
       else
-        flash.now[:alert] = "Only images with an jpg, jpeg or png extension are accepted."
-        render :new, status: "Error"
+        flash[:alert] = "Only images with an jpg, jpeg or png extension are accepted."
+        render :new
       end
     else
-      flash.now[:alert] = "A valid profile picture is required."
-      render :new, status: "Error"
+      flash[:alert] = "A valid profile picture is required."
+      render :new
     end
   end
 

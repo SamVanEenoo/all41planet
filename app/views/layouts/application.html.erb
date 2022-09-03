@@ -14,15 +14,6 @@
   </head>
 
   <body class="min-height-100">
-    <% flash.each do |type, msg| %>
-      <div id="flash-alert" class="alert alert-info alert-dismissible fade show fixed-top" role="alert">
-        <div class="container">
-          <%= msg %>
-          <button type="button" class="btn-close close-flash-alert" data-dismiss="alert" aria-label="Close"></button>
-        </div>
-      </div>
-    <% end %>
-
     <div id="main-nav">
       <a href="/">
         <div class="main-nav-item <%= active_class('/') %>">
