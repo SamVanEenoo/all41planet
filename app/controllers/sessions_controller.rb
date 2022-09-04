@@ -7,8 +7,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to "/"
     else
-      message = "Something went wrong!"
-      flash[:alert] = message
+      flash[:alert] = "Something went wrong!"
       redirect_to login_sessions_path, turbolinks: false
     end
   end
