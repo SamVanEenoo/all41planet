@@ -14,6 +14,13 @@
   </head>
 
   <body class="min-height-100">
+    <% flash.each do |type, msg| %>
+      <div id="flash-alert" class="alert alert-danger alert-dismissible fade show fixed-top" role="alert">
+        <%= msg %>
+        <button type="button" class="btn-close close-flash-alert" data-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
+
     <div id="main-nav">
       <a href="/">
         <div class="main-nav-item <%= active_class('/') %>">
@@ -46,6 +53,7 @@
               <%= current_user["first_name"] %> <%= current_user["last_name"] %>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><%= link_to "Profile", user_path(current_user), class:"dropdown-item" %></li>
                 <li><a class="dropdown-item" href="/sessions/logout">Logout</a></li>
               </ul>
             </span>

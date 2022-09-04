@@ -59,11 +59,11 @@ class UsersController < ApplicationController
           render :new
         end
       else
-        flash[:alert] = "Only images with an jpg, jpeg or png extension are accepted."
+        flash.now[:alert] = "Only images with an jpg, jpeg or png extension are accepted."
         render :new
       end
     else
-      flash[:alert] = "A valid profile picture is required."
+      flash.now[:alert] = "A valid profile picture is required."
       render :new
     end
   end
@@ -72,11 +72,29 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   def update
-    respond_to do |format|
-      @user.update(user_params)
-      format.html { redirect_to root_path }
+    # respond_to do |format|
+    #   @user.update(user_params)
+    #   format.html { redirect_to root_path }
+    # end
+
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    if !params[:user][:avatar].nil?
+      accepted_formats = [".jpg",".jpeg",".png"]
+      if accepted_formats.include?(File.extname(params[:user][:avatar]))
+        img = ImageProcessing::MiniMagick.source(params[:user][:avatar].path())
+        avatar = img.crop("#{params[:user][:avatar_crop_w]}x#{params[:user][:avatar_crop_h]}+#{params[:user][:avatar_crop_x]}+#{params[:user][:avatar_crop_y]}")
+              .resize_to_limit!(100, 100)
+        @user.avatar.attach(io: avatar, filename: "#{params[:user][:first_name]}_#{params[:user][:last_name]}.png", content_type: "image/png")
+      end
+      @user.save
     end
+    redirect_to user_path(@user)
   end
 
   def influencers
