@@ -202,6 +202,14 @@ h2 {
   padding-bottom: 15px;
 }
 
+#user-menu img {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid $influencers-color;
+}
+
 .strong {
   font-family: 'Flexo-Bold';
   color: #000;
@@ -216,4 +224,9 @@ h2 {
 
 .label {
   font-family: 'Flexo-Bold';
+}
+
+.dropdown-menu-right {
+  position: absolute !important;
+  inset: 0px 0px auto auto !important;
 }
