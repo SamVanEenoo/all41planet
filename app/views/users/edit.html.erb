@@ -1,0 +1,87 @@
+<% if current_user.id == @user.id %>
+<div id="sign-up">
+<h2 class="text-center margin-bottom-md margin-top-sm">Edit profile</h2>
+
+  <%= form_for @user, local: true, data: { turbo: false }, controller: 'users', action:'update' do |f| %>
+    <div class="sign-up-section">
+      <table class="table borderless">
+        <thead>
+          <tr>
+            <th colspan="2">
+              <h4>Personal data</h4>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-6"><%= f.label :first_name %></td>
+            <td class="col-6"><%= f.text_field :first_name, required:true %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :last_name %></td>
+            <td><%= f.text_field :last_name, required:true %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :email %></td>
+            <td><%= f.text_field :email, required:true %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :avatar %></td>
+            <td><%= f.file_field :avatar, id: :avatar, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <% if !f.object.image.present? %>
+                <span class="fa fa-file place-holder-image"></span>
+                <%= image_tag '', id: :avatar_preview %>
+              <%else%>
+                <%= image_tag f.object.image_url(:thumb), id: :avatar_preview %>
+              <% end %>
+            </td>
+          </tr>
+
+          <% %w[x y w h].each do |attribute| %>
+            <%= f.hidden_field "avatar_crop_#{attribute}", id:"avatar_crop_#{attribute}" %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <table class="table borderless">
+      <tbody>
+        <tr>
+          <td class="col-6"></td>
+          <td class="col-6"><%= f.submit "Update", class:"btn btn-primary" %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+
+
+<!-- Modal -->
+<div id="upload-modal" class="modal fade" data-keyboard="false" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Crop Image</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <img id="image" width="100%" src="" alt="Logo">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <input type="button" class="btn btn-primary" id="CropButton" value="Opslaan" data-bs-dismiss="modal"></button>
+        <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<% else %>
+  <div class="alert alert-danger">
+    U heeft niet de juiste rechten om deze pagina te bekijken.
+  </div>
+<% end %>

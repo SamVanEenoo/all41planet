@@ -1,0 +1,25 @@
+<button class="btn btn-sm btn-secondary" disabled="true">Profile</button>
+<% if current_user.id == @user.id %>
+<a href="<%= edit_user_path(@user) %>"><button class="btn btn-sm btn-primary">Edit profile</button></a>
+<% end %>
+
+<hr />
+
+<table class="table">
+  <tr>
+    <td class="col-sm-3 col-md-2 label">First name</td>
+    <td class="col-sm-9 col-md-10"><%= @user["first_name"] %></td>
+  </tr>
+  <tr>
+    <td class="label">Last name</td>
+    <td><%= @user["last_name"] %></td>
+  </tr>
+  <tr>
+    <td class="label">Email</td>
+    <td><%= @user["email"] %></td>
+  </tr>
+  <tr>
+    <td class="label">Picture</td>
+    <td><div class="image"><%= image_tag @user.avatar %></div></td>
+  </tr>
+</table>
