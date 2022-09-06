@@ -98,6 +98,10 @@
               <td><%= c.file_field :company_logo, id: :company_logo, class: "form-control" %></td>
             </tr>
             <tr>
+              <td><%= c.label :percentage %></td>
+              <td><%= c.number_field :percentage, id: :company_percentage, value:"2", min:"1", max:"100", step:".1" %>%</td>
+            </tr>
+            <tr>
               <td></td>
               <td>
                 <% if !f.object.image.present? %>
