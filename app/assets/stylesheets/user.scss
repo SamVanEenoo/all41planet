@@ -20,6 +20,8 @@ $influencers-color-hover: #c56eb8;
 }
 
 #companies {
+  min-height: 200px;
+
   .pagination {
     background: transparent;
     cursor: default;
@@ -71,6 +73,8 @@ $influencers-color-hover: #c56eb8;
 }
 
 #influencers {
+  min-height: 200px;
+
   .pagination {
     background: transparent;
     cursor: default;
@@ -122,6 +126,8 @@ $influencers-color-hover: #c56eb8;
 }
 
 #projects {
+  min-height: 200px;
+
   .pagination {
     background: transparent;
     cursor: default;
