@@ -200,7 +200,7 @@ a .project:hover  {
 }
 
 #main-content {
-  @media (min-width: 320px ) {
+  @media (max-width: 600px) {
     padding-left: 56px;
   }
 }
