@@ -17,12 +17,12 @@
 @import "bootstrap";
 @import "font-awesome";
 
-$enterpreneurs-color: #7997BD;
-$enterpreneurs-color-hover: #89aad6;
-$projects-color: #70bc66;
-$projects-color-hover: #7fd674;
-$influencers-color: #bd79b9;
-$influencers-color-hover: #d689d1;
+$enterpreneurs-color: #039ccd;
+$enterpreneurs-color-hover: #0fbcdc;
+$projects-color: #46b269;
+$projects-color-hover: #6ec570;
+$influencers-color: #b246a9;
+$influencers-color-hover: #c56eb8;
 
 @font-face {
    font-family: 'Flexo';
@@ -39,9 +39,12 @@ html {
 }
 
 body {
-  background: #EEE;
+  background: url("background.png");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
   color: #333;
-  padding: 0 0 60px 0;
+  padding: 60px 0 60px 0;
   font-family: "Flexo";
 }
 
@@ -246,4 +249,10 @@ h2 {
   font-size: 75%;
   color: #AAA;
   line-height: 1.3;
+}
+
+#content-wrapper {
+  background: #FFF;
+  padding: 30px;
+  min-height: 100%;
 }

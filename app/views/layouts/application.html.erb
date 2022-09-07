@@ -39,53 +39,57 @@
       </a>
     </div>
 
-    <div class="container margin-bottom-lg margin-top-md">
-      <div class="row">
-        <div class="order-2 col-sm-12 order-sm-2 col-md-12 col-lg-4 order-md-1">
-        </div>
-        <div class="order-3 col-sm-12 order-sm-3 push-sm-12 col-md-6 col-lg-4 order-md-2 text-center">
-          <%= link_to image_tag("all41planet_logo.png", id:"logo"), "/" %>
-        </div>
-        <div id="userButtons" class="order-1 col-sm-12 order-sm-1 col-md-6 col-lg-4 order-md-3 text-right">
-          <% if current_user %>
-            <span class="dropdown">
-              <div id="user-menu" data-bs-toggle="dropdown" aria-expanded="false">
-              <%= image_tag current_user.avatar %>
-                <!-- <div id="notification"></div> -->
-              </div>
-              <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="user-menu">
-                <li><%= link_to "Profile", user_path(current_user), class:"dropdown-item" %></li>
-                <li><a class="dropdown-item" href="/sessions/logout">Logout</a></li>
-              </ul>
-            </span>
-          <% else %>
-            <% unless @login_page %>
-            <a href="/users/new">
-              <button class="btn btn-primary">Registreer</button>
-            </a>
-            <a href="/sessions/login"><button class="btn btn-secondary">Login</button></a>
-            <% end -%>
-          <% end %>
+    <div id="content-wrapper" class="container">
+
+      <div class="container margin-bottom-lg margin-top-md">
+        <div class="row">
+          <div class="order-2 col-sm-12 order-sm-2 col-md-12 col-lg-4 order-md-1">
+          </div>
+          <div class="order-3 col-sm-12 order-sm-3 push-sm-12 col-md-6 col-lg-4 order-md-2 text-center">
+            <%= link_to image_tag("all41planet_logo.png", id:"logo"), "/" %>
+          </div>
+          <div id="userButtons" class="order-1 col-sm-12 order-sm-1 col-md-6 col-lg-4 order-md-3 text-right">
+            <% if current_user %>
+              <span class="dropdown">
+                <div id="user-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= image_tag current_user.avatar %>
+                  <!-- <div id="notification"></div> -->
+                </div>
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="user-menu">
+                  <li><%= link_to "Profile", user_path(current_user), class:"dropdown-item" %></li>
+                  <li><a class="dropdown-item" href="/sessions/logout">Logout</a></li>
+                </ul>
+              </span>
+            <% else %>
+              <% unless @login_page %>
+              <a href="/users/new">
+                <button class="btn btn-primary">Registreer</button>
+              </a>
+              <a href="/sessions/login"><button class="btn btn-secondary">Login</button></a>
+              <% end -%>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
 
 
-    <div class="container" id="main-content">
-      <div class="row">
-        <div class="col-12 margin-bottom-lg">
-          <%= yield %>
+      <div class="container" id="main-content">
+        <div class="row">
+          <div class="col-12 margin-bottom-lg">
+            <%= yield %>
+          </div>
         </div>
       </div>
-    </div>
 
 
-    <div class="container">
-      <div class="row">
-        <div class="col-12 margin-bottom-lg text-center">
-          &copy; 2022 - All 4 1 planet
+      <div class="container">
+        <div class="row">
+          <div class="col-12 margin-bottom-lg text-center">
+            &copy; 2022 - All 4 1 planet
+          </div>
         </div>
       </div>
+
     </div>
 
   </body>
