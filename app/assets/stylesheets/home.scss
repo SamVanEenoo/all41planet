@@ -39,14 +39,17 @@ $influencers-color-hover: #c56eb8;
 
 .company {
   background: $enterpreneurs-color;
+  border-radius: 3px;
 }
 
 .influencer {
   background: $influencers-color;
+  border-radius: 3px;
 }
 
 .project {
   background: $projects-color;
+  border-radius: 3px;
 }
 
 .target {
@@ -69,7 +72,8 @@ $influencers-color-hover: #c56eb8;
 .image img {
   width: 100px;
   height: 100px;
-    box-shadow: 0 0 2px 0 #777;
+  box-shadow: 0 0 1px 0 #777;
+  border-radius: 3px;
 }
 
 .name {
@@ -115,11 +119,13 @@ a .project:hover  {
   .name {
     color: #FFF;
     background: $enterpreneurs-color;
+    border-radius: 3px;
   }
 
   .title {
     color: $enterpreneurs-color;
     margin-bottom: 15px;
+    border-radius: 3px;
   }
 
   .body {
@@ -143,11 +149,13 @@ a .project:hover  {
   .name {
     color: #FFF;
     background: $influencers-color;
+    border-radius: 3px;
   }
 
   .title {
     color: $influencers-color;
     margin-bottom: 15px;
+    border-radius: 3px;
   }
 
   .body {
@@ -171,11 +179,13 @@ a .project:hover  {
   .name {
     color: #FFF;
     background: $projects-color;
+    border-radius: 3px;
   }
 
   .title {
     color: $projects-color;
     margin-bottom: 15px;
+    border-radius: 3px;
   }
 
   .body {
