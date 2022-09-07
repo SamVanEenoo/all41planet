@@ -51,7 +51,7 @@
       </table>
     </div>
 
-    <div class="sign-up-section ">
+    <div class="sign-up-section">
       <table class="table borderless">
         <thead id="company-header">
           <tr>
@@ -96,6 +96,10 @@
             <tr>
               <td><%= c.label :company_logo %></td>
               <td><%= c.file_field :company_logo, id: :company_logo, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td><%= c.label :percentage %><br /><div class="small-description">Het percentage van dividend en/of meerwaarde op aandelen die je zal doneren aan All41planet</div></td>
+              <td><%= c.number_field :percentage, id: :company_percentage, value:"2", min:"1", max:"100", step:".1" %>%</td>
             </tr>
             <tr>
               <td></td>
@@ -151,6 +155,10 @@
             <tr>
               <td><%= pr.label :description, id: :project_description %></td>
               <td><%= pr.text_area :description %></td>
+            </tr>
+            <tr>
+              <td><%= pr.label :climate_advantage, id: :project_climate_advantage %></td>
+              <td><%= pr.text_area :climate_advantage %></td>
             </tr>
             <tr>
               <td><%= pr.label :project_website, id: :project_website %></td>

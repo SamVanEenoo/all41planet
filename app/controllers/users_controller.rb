@@ -40,7 +40,7 @@ class UsersController < ApplicationController
           end
 
           if project_params
-            if !!project_params["show_project"] == "true"
+            if project_params["show_project"] == "true"
               @project = Project.new(project_params)
               img = ImageProcessing::MiniMagick.source(project_params[:project_logo].path())
               avatar = img.crop("#{params[:user][:project][:project_logo_crop_w]}x#{params[:user][:project][:project_logo_crop_h]}+#{params[:user][:project][:project_logo_crop_x]}+#{params[:user][:project][:project_logo_crop_y]}")
@@ -123,11 +123,11 @@ class UsersController < ApplicationController
   end
 
   def company_params
-    params.require(:user).require(:company).permit(:name,:vat_number,:website,:company_logo,:show_company)
+    params.require(:user).require(:company).permit(:name,:vat_number,:website,:company_logo,:percentage,:show_company)
   end
 
   def project_params
-    params.require(:user).require(:project).permit(:name,:description,:website,:project_logo,:show_project)
+    params.require(:user).require(:project).permit(:name,:description,:website,:project_logo,:climate_advantage,:show_project)
   end
 
 end
