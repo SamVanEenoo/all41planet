@@ -252,7 +252,9 @@ h2 {
 }
 
 #content-wrapper {
-  background: #FFF;
+  background: #F9F9F9;
   padding: 30px;
   min-height: 100%;
+  box-shadow: 0 0 4px 0 #AAA;
+  border-radius: 4px;
 }
