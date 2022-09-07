@@ -253,7 +253,6 @@ h2 {
 #content-wrapper {
   background: #F9F9F9;
   padding: 30px;
-  min-height: 100%;
   box-shadow: 0 0 4px 0 #AAA;
   border-radius: 8px;
   margin-bottom: 60px;
@@ -263,4 +262,18 @@ h2 {
 #footer {
   color: #FFF;
   font-family: 'Flexo-Bold';
+}
+
+
+
+#logo {
+  height: 70px;
+  margin-left: 25px;
+}
+
+#logo-title {
+  display: inline-block;
+  margin-left: 10px;
+  font-family: "Flexo-Bold";
+  font-size: 20px;
 }
