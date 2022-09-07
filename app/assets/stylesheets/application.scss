@@ -255,16 +255,23 @@ h2 {
   padding: 30px;
   box-shadow: 0 0 4px 0 #AAA;
   border-radius: 8px;
-  margin-bottom: 60px;
-  margin-top: 60px;
+}
+
+#content-wrapper {
+  @media (min-width: 600px) {
+    margin-bottom: 60px;
+    margin-top: 60px;
+  }
+  @media (max-width: 600px) {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
 }
 
 #footer {
   color: #FFF;
   font-family: 'Flexo-Bold';
 }
-
-
 
 #logo {
   height: 70px;
