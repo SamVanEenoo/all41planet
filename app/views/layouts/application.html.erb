@@ -7,7 +7,7 @@
     <%= csp_meta_tag %>
     <meta name="turbo-visit-control" content="reload">
 
-    <link rel="icon" type="image/x-icon" href=<%= image_url("favicon.ico") %>>
+    <link rel="icon" type="image/x-icon" href=<%= image_url("favicon") %>>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.1.0/cropper.min.css" integrity="sha512-vmXqikRa5kmI3gOQygzml5nV+5NGxG8rt8KWHKj8JYYK12JUl2L8RBfWinFGTzvpwwsIRcINy9mhLyodnmzjig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <%= javascript_importmap_tags %>
@@ -45,8 +45,8 @@
         <div class="row">
           <div class="order-2 col-sm-12 order-sm-2 col-md-12 col-lg-4 order-md-1">
           </div>
-          <div class="order-3 col-sm-12 order-sm-3 push-sm-12 col-md-6 col-lg-4 order-md-2 text-center">
-            <%= link_to image_tag("all41planet_logo.png", id:"logo"), "/" %>
+          <div class="order-3 col-sm-12 order-sm-3 push-sm-12 col-md-6 col-lg-4 order-md-2">
+            <%= link_to image_tag("all41planet_logo.png", id:"logo"), "/" %> <span id="logo-title">ALL FOR ONE PLANET</span>
           </div>
           <div id="userButtons" class="order-1 col-sm-12 order-sm-1 col-md-6 col-lg-4 order-md-3 text-right">
             <% if current_user %>
