@@ -2,12 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-$enterpreneurs-color: #2aadb8;
-$enterpreneurs-color-hover: #5db7b2;
-$projects-color: #46b269;
-$projects-color-hover: #6ec570;
-$influencers-color: #b246a9;
-$influencers-color-hover: #c56eb8;
+$enterpreneurs-color: #057cbc;
+$enterpreneurs-color-hover: #0e9bcb;
+
+$projects-color: #9cce0b;
+$projects-color-hover: #a7d114;
+
+$influencers-color: #52c8c6;
+$influencers-color-hover: #5ecdca;
 
 #sign-up {
   max-width: 800px;
@@ -20,6 +22,8 @@ $influencers-color-hover: #c56eb8;
 }
 
 #companies {
+  min-height: 200px;
+
   .pagination {
     background: transparent;
     cursor: default;
@@ -71,6 +75,8 @@ $influencers-color-hover: #c56eb8;
 }
 
 #influencers {
+  min-height: 200px;
+
   .pagination {
     background: transparent;
     cursor: default;
@@ -122,6 +128,8 @@ $influencers-color-hover: #c56eb8;
 }
 
 #projects {
+  min-height: 200px;
+
   .pagination {
     background: transparent;
     cursor: default;
