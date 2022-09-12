@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
     if !params[:user][:avatar].nil?
       accepted_formats = [".jpg",".jpeg",".png"]
-      if accepted_formats.include?(File.extname(params[:user][:avatar]))
+      if accepted_formats.include?(File.extname(params[:user][:avatar].downcase))
         img = ImageProcessing::MiniMagick.source(params[:user][:avatar].path())
         avatar = img.crop("#{params[:user][:avatar_crop_w]}x#{params[:user][:avatar_crop_h]}+#{params[:user][:avatar_crop_x]}+#{params[:user][:avatar_crop_y]}")
               .resize_to_limit!(100, 100)
