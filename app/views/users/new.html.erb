@@ -51,30 +51,32 @@
       </table>
     </div>
 
-    <div class="sign-up-section">
+    <div id="add-company" class="sign-up-section <% if params[:company] %> d-none<% end %>">
+      <table class="table borderless">
+        <tbody>
+          <h4>+ Add company</h4>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div id="company-body" class="sign-up-section <% unless params[:company] %> d-none<% end %>">
       <table class="table borderless">
         <thead id="company-header">
           <tr>
             <th colspan="2">
-              <h4>
-
-                <span id="company-chevron-right" <% if params[:company] %>class="d-none"<% end %>>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                  </svg>
-                </span>
-
-                <span id="company-chevron-down" <% unless params[:company] %>class="d-none"<% end %>>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                  </svg>
-                </span>
+              <h4 id="company-title">
                 Company data
+                <div id="delete-company">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                  </svg>
+                </div>
               </h4>
             </th>
           </tr>
         </thead>
-        <tbody id="company-body" <% unless params[:company] %>class="d-none"<% end %>>
+        <tbody>
           <%= f.fields_for :company do |c| %>
             <% if params[:company] %>
               <%= c.hidden_field "show_company", id:"show_company", value: true %>
@@ -120,28 +122,33 @@
       </table>
     </div>
 
-    <div class="sign-up-section ">
+
+
+    <div id="add-project" class="sign-up-section <% if params[:project] %> d-none<% end %>">
+      <table class="table borderless">
+        <tbody>
+          <h4>+ Add project</h4>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="project-body" class="sign-up-section <% unless params[:company] %> d-none<% end %>">
       <table class="table borderless">
         <thead id="project-header">
           <tr>
             <th colspan="2">
-              <h4>
-                <span id="project-chevron-right" <% if params[:project] %>class="d-none"<% end %>>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                  </svg>
-                </span>
-                <span id="project-chevron-down" <% unless params[:project] %>class="d-none"<% end %>>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                  </svg>
-                </span>
+              <h4 id="company-title">
                 Project data
+                <span id="delete-project">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                  </svg>
+                </span>
               </h4>
             </th>
           </tr>
         </thead>
-        <tbody id="project-body" <% unless params[:project] %>class="d-none"<% end %>>
+        <tbody>
           <%= f.fields_for :project do |pr| %>
             <% if params[:project] %>
               <%= pr.hidden_field "show_project", id:"show_project", value: true %>

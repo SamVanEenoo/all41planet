@@ -192,4 +192,24 @@ $influencers-color-hover: #5ecdca;
   }
 }
 
+#company-title,
+#project-title {
+  position: relative;
+}
+
+#add-company,
+#add-project {
+  cursor: pointer;
+}
+
+#delete-company,
+#delete-project {
+  top:0;
+  right:0;
+  position: absolute;
+
+  svg {
+    cursor: pointer;
+  }
+}
 

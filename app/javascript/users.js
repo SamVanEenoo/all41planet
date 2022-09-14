@@ -147,58 +147,52 @@ if(uploadModal){
     $("#project_climate_advantage").attr("required", true);
   }
 
-  $("#company-header").on('click', function () {
-    $("#company-body").toggle();
+  $("#add-company").on('click', function () {
+    $("#company-body").show();
     $("#company-body").removeClass("d-none");
-    $("#company-chevron-down").toggle();
-    $("#company-chevron-right").toggle();
-    $("#company-chevron-down").removeClass("d-none");
-    $("#company-chevron-right").removeClass("d-none");
-    show_company = $("#show_company").val()
-    if(show_company == "true" || show_company == true){
-      show_company = false
-      $("#show_company").val(show_company)
-      $("#company_name").attr("required", false);
-      $("#company_vat_number").attr("required", false);
-      $("#company_website").attr("required", false);
-      $("#company_logo").attr("required", false);
-      $("#company_percentage").attr("required", false);
-    }else{
-      show_company = true
-      $("#show_company").val(show_company)
-      $("#company_name").attr("required", true);
-      $("#company_vat_number").attr("required", true);
-      $("#company_website").attr("required", true);
-      $("#company_logo").attr("required", true);
-      $("#company_percentage").attr("required", true);
-    }
+    $("#add-company").hide();
+    show_company = true
+    $("#show_company").val(show_company)
+    $("#company_name").attr("required", true);
+    $("#company_vat_number").attr("required", true);
+    $("#company_website").attr("required", true);
+    $("#company_percentage").attr("required", true);
   });
 
-  $("#project-header").on('click', function () {
-    $("#project-body").toggle();
+  $("#delete-company").on('click', function () {
+    $("#company-body").hide();
+    $("#company-body").removeClass("d-none");
+    $("#add-company").show();
+    show_company = false
+    $("#show_company").val(show_company)
+    $("#company_name").attr("required", false);
+    $("#company_vat_number").attr("required", false);
+    $("#company_website").attr("required", false);
+    $("#company_percentage").attr("required", false);
+  });
+
+  $("#add-project").on('click', function () {
+    $("#project-body").show();
     $("#project-body").removeClass("d-none");
-    $("#project-chevron-down").toggle();
-    $("#project-chevron-right").toggle();
-    $("#project-chevron-down").removeClass("d-none");
-    $("#project-chevron-right").removeClass("d-none");
-    show_project = $("#show_project").val()
-    if(show_project == "true" || show_project == true){
-      show_project = false
-      $("#show_project").val(show_project)
-      $("#project_name ").attr("required", false);
-      $("#project_description").attr("required", false);
-      $("#project_website").attr("required", false);
-      $("#project_logo").attr("required", false);
-      $("#project_climate_advantage").attr("required", false);
-    }else{
-      show_project = true
-      $("#show_project").val(show_project)
-      $("#project_name ").attr("required", true);
-      $("#project_description").attr("required", true);
-      $("#project_website").attr("required", true);
-      $("#project_logo").attr("required", true);
-      $("#project_climate_advantage").attr("required", true);
-    }
+    $("#add-project").hide();
+    show_project = true
+    $("#show_project").val(show_project)
+    $("#project_name").attr("required", true);
+    $("#project_vat_number").attr("required", true);
+    $("#project_website").attr("required", true);
+    $("#project_percentage").attr("required", true);
+  });
+
+  $("#delete-project").on('click', function () {
+    $("#project-body").hide();
+    $("#project-body").removeClass("d-none");
+    $("#add-project").show();
+    show_project = false
+    $("#show_project").val(show_project)
+    $("#project_name").attr("required", false);
+    $("#project_vat_number").attr("required", false);
+    $("#project_website").attr("required", false);
+    $("#project_percentage").attr("required", false);
   });
 
 }
