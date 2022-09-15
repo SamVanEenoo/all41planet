@@ -174,10 +174,6 @@ class UsersController < ApplicationController
     @enterpreneurs = CompanyUser.paginate(page: params[:page], per_page: 20)
   end
 
-  def projects
-    @projects = Project.paginate(page: params[:page], per_page: 20)
-  end
-
   def sanitize_fields_params
     logo_crop_x = params[:user][:logo_crop_x]
     logo_crop_y = params[:user][:logo_crop_y]

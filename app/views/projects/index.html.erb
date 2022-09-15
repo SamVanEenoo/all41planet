@@ -7,7 +7,9 @@
           <tr>
             <td><div class="image"><%= image_tag project.avatar %></div></td>
             <td class="width-100">
-              <div class="name"><%= project["name"] %></div>
+              <%= link_to(project) do %>
+                <div class="name"><%= project["name"] %></div>
+              <% end -%>
             </td>
           </tr>
         <% end -%>

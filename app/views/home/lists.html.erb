@@ -92,7 +92,11 @@
             <% end %>
           </div>
         </td>
-        <td class="width-100"><div class="name"><%= project["name"] %></div></td>
+        <td class="width-100">
+          <%= link_to(project) do %>
+            <div class="name"><%= project["name"] %></div>
+          <% end -%>
+        </td>
       </tr>
       <% end -%>
     </table>
