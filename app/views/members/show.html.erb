@@ -1,0 +1,14 @@
+<div id="member">
+  <h2><%= @member[:first_name] %> <%= @member[:last_name] %></h2>
+  <table>
+    <tbody>
+      <tr>
+        <td class="image-wrapper">
+          <div class="image"><%= image_tag @member.avatar %></div>
+        </td>
+        <td class="content width-100">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,17 @@
+<div id="company">
+  <h2><%= @company_user.company[:name] %></h2>
+  <table>
+    <tbody>
+      <tr>
+        <td class="image-wrapper">
+          <div class="image"><%= image_tag @company_user.company.avatar %></div>
+        </td>
+        <td class="content width-100">
+          <div class="description"><%= @company_user.company[:vat_number] %></div>
+          <div class="description"><div class="link"><%= link_to "#{@company_user.company["website"]}", "#{@company_user.company["website"]}" %></div></div>
+          <div class="link"><%= link_to "#{@company_user.user["first_name"]} #{@company_user.user["last_name"]}", member_path(id: @company_user.user.id) %></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

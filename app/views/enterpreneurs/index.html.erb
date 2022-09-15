@@ -1,0 +1,30 @@
+<div id="home">
+<div class="row">
+
+  <!-- INFLUENCERS -->
+  <div id="companies" class="col-12 margin-bottom-lg">
+    <table>
+      <% @enterpreneurs.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to member_path(id: user.user.id) do %>
+              <div class="image"><%= image_tag user.user.avatar %></div>
+            <% end -%>
+          </td>
+          <td class="width-100">
+            <%= link_to member_path(id: user.user.id) do %>
+              <div class="name"><%= user.user["first_name"] %> <%= user.user["last_name"] %></div>
+            <% end -%>
+          </td>
+        </tr>
+      <% end -%>
+    </table>
+
+
+    <%= will_paginate @enterpreneurs %>
+  </div>
+
+
+
+</div>
+</div>

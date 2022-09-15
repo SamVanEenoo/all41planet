@@ -16,13 +16,22 @@
         <td>
           <div class="image">
             <% if !company_user.company.avatar.nil? %>
-              <%= image_tag company_user.company.avatar %>
+              <%= link_to(company_user.company) do %>
+                <%= image_tag company_user.company.avatar %>
+              <% end -%>
             <% else %>
               <img src="https://media-exp1.licdn.com/dms/image/C4D0BAQFyvnowthnfJQ/company-logo_200_200/0/1607441534777?e=2159024400&v=beta&t=NsLl0AniRT7a3w5UXDf4OTDbkgxAC28LS3PQnNt3pJ4" />
             <% end %>
           </div>
         </td>
-        <td class="width-100"><div class="name"><%= company_user.user["first_name"] %> <%= company_user.user["last_name"] %><br /><em><%= company_user.company["name"] %></em></div></td>
+        <td class="width-100">
+          <%= link_to(company_user.company) do %>
+            <div class="name">
+              <%= company_user.user["first_name"] %> <%= company_user.user["last_name"] %><br />
+              <em><%= company_user.company["name"] %></em>
+            </div>
+          <% end -%>
+        </td>
       </tr>
       <% end -%>
     </table>
@@ -49,15 +58,21 @@
     <table>
       <% @last_5_users.each do |user| %>
         <tr>
-          <td><div class="image"><%= image_tag user.avatar %></div></td>
+          <td>
+            <%= link_to member_path(id: user.id) do %>
+              <div class="image"><%= image_tag user.avatar %></div>
+            <% end -%>
+          </td>
           <td class="width-100">
-            <div class="name"><%= user["first_name"] %> <%= user["last_name"] %></div>
+            <%= link_to member_path(id: user.id) do %>
+              <div class="name"><%= user["first_name"] %> <%= user["last_name"] %></div>
+            <% end -%>
           </td>
         </tr>
       <% end -%>
     </table>
 
-    <a href="/influencers">
+    <a href="/members">
       <div class="influencer padding-sm margin-bottom-sm text-center">
         Alle leden
       </div>
@@ -86,7 +101,9 @@
           <div class="image">
 
             <% if !project.avatar.nil? %>
-              <%= image_tag project.avatar %>
+              <%= link_to(project) do %>
+                <%= image_tag project.avatar %>
+              <% end -%>
             <% else %>
               <img src="https://www.natuurpunt.be/sites/all/themes/ntpweb_theme/logo.png" />
             <% end %>

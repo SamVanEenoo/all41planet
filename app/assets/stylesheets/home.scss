@@ -81,6 +81,14 @@ $influencers-color-hover: #5ecdca;
   justify-content: center;
   align-content: center;
   flex-direction: column;
+
+  a {
+    color: #FFF;
+  }
+
+  a:hover {
+    color: #CCC;
+  }
 }
 
 .company, .influencer, .project {
@@ -119,6 +127,10 @@ a .project:hover  {
     border-radius: 3px;
   }
 
+  .name:hover {
+    background: $enterpreneurs-color-hover;
+  }
+
   .title {
     color: $enterpreneurs-color;
     margin-bottom: 15px;
@@ -149,6 +161,10 @@ a .project:hover  {
     border-radius: 3px;
   }
 
+  .name:hover {
+    background: $influencers-color-hover;
+  }
+
   .title {
     color: $influencers-color;
     margin-bottom: 15px;
@@ -177,6 +193,10 @@ a .project:hover  {
     color: #FFF;
     background: $projects-color;
     border-radius: 3px;
+  }
+
+  .name:hover {
+    background: $projects-color-hover;
   }
 
   .title {

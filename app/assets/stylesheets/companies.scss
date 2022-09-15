@@ -1,9 +1,9 @@
-$projects-color: #9cce0b;
-$projects-color-hover: #a7d114;
+$enterpreneurs-color: #057cbc;
+$enterpreneurs-color-hover: #0e9bcb;
 
-#project {
+#company {
   .subtitle {
-    color: $projects-color;
+    color: $enterpreneurs-color;
   }
 
   .description {
@@ -15,7 +15,7 @@ $projects-color-hover: #a7d114;
   }
 
   .link a{
-    color: $projects-color;
+    color: $enterpreneurs-color;
   }
 
   .link a:hover{
