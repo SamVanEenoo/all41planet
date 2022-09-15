@@ -1,0 +1,19 @@
+<div id="project">
+  <h2><%= @project[:name] %></h2>
+  <table>
+    <tbody>
+      <tr>
+        <td class="image-wrapper">
+          <div class="image"><%= image_tag @project.avatar %></div>
+        </td>
+        <td class="content width-100">
+          <h4 class="subtitle">Omschrijving</h4>
+          <div class="description"><%= @project[:description] %></div>
+          <h4 class="subtitle">Ecologisch aspect</h4>
+          <div class="description"><%= @project[:climate_advantage] %></div>
+          <div class="link"><%= link_to "#{@project["website"]}", "#{@project["website"]}", target: :_blank %></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

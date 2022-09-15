@@ -1,0 +1,30 @@
+$enterpreneurs-color: #057cbc;
+$enterpreneurs-color-hover: #0e9bcb;
+
+$projects-color: #9cce0b;
+$projects-color-hover: #a7d114;
+
+$influencers-color: #52c8c6;
+$influencers-color-hover: #5ecdca;
+
+#project {
+  .subtitle {
+    color: $projects-color;
+  }
+
+  .description {
+    margin-bottom: 15px;
+  }
+
+  .image-wrapper {
+    vertical-align: top;
+  }
+
+  .link a{
+    color: $projects-color;
+  }
+
+  .link a:hover{
+    color: #555;
+  }
+}
