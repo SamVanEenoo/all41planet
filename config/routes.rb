@@ -9,8 +9,11 @@ Rails.application.routes.draw do
     resources :comments
     resources :likes
   end
-  resources :users
+  resources :companies
+  resources :enterpreneurs
+  resources :members
   resources :projects
+  resources :users
   resources :sessions do
     collection do
       get "logout"
@@ -19,10 +22,6 @@ Rails.application.routes.draw do
   end
 
   get "lists", to:"home#lists"
-  get "articles", to:"home#articles"
-  get "influencers", to: 'users#influencers'
-  get "enterpreneurs", to: 'users#enterpreneurs'
-  # get "projects", to: 'users#projects'
 
   root "home#index"
 end
