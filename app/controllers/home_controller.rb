@@ -16,7 +16,7 @@ class HomeController < ApplicationController
     @last_5_users = @users.last(5)
     @companies = Company.all
     @last_5_companies = @companies.last(5)
-    @projects = Project.where(approved: true)
+    @projects = Project.where(state: "Approved")
     @last_5_projects = @projects.last(5)
   end
 

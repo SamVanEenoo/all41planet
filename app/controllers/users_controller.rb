@@ -13,6 +13,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @projects = Project.where(user_id: params[:id])
+    @user_companies = CompanyUser.where(user_id: params[:id])
   end
 
   def edit

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_18_113925) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_18_150310) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -94,6 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_113925) do
     t.text "climate_advantage"
     t.integer "user_id"
     t.boolean "approved"
+    t.string "state"
   end
 
   create_table "users", force: :cascade do |t|
