@@ -15,7 +15,7 @@
             <div class="image"><%= image_tag @user.avatar %></div>
           </td>
           <td class="content width-100">
-            <% if current_user.id == @user.id %>
+            <% if current_user&.id == @user.id %>
               <%= @user[:email] %>
             <% end -%>
           </td>
@@ -24,7 +24,7 @@
     </table>
   </div>
 
-  <% if !@projects.nil? %>
+  <% if !@projects.count != 0 %>
   <h4>Projects</h4>
 
   <table class="table margin-bottom-md">

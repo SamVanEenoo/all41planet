@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @project.state = "In review"
     img = ImageProcessing::MiniMagick.source(project_params[:avatar].path())
     avatar = img.crop("#{params[:project][:avatar_crop_w]}x#{params[:project][:avatar_crop_h]}+#{params[:project][:avatar_crop_x]}+#{params[:project][:avatar_crop_y]}")
           .resize_to_limit!(100, 100)
