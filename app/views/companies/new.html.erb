@@ -1,0 +1,77 @@
+<div id="sign-up">
+<h2 class="text-center margin-bottom-md margin-top-sm">Onderneming</h2>
+
+  <% if current_user %>
+    <%= form_for @company, local: true, data: { turbo: false }, controller: 'companies', action:'create' do |c| %>
+      <table class="table borderless">
+        <tbody>
+          <tr>
+            <td class="col-6"><%= c.label :name %></td>
+            <td class="col-6"><%= c.text_field :name, id: :name  %></td>
+          </tr>
+          <tr>
+            <td><%= c.label :vat_number %></td>
+            <td><%= c.text_field :vat_number, id: :vat_number %></td>
+          </tr>
+          <tr>
+            <td><%= c.label :website %></td>
+            <td><%= c.text_field :website, id: :website %></td>
+          </tr>
+          <tr>
+            <td><%= c.label :percentage %><br /><div class="small-description">Het percentage van dividend en/of meerwaarde op aandelen die je wil doneren aan All41planet</div></td>
+            <td><%= c.number_field :percentage, id: :company_percentage, value:"2", min:"1", max:"100", step:".1" %>%</td>
+          </tr>
+          <tr>
+            <td><%= c.label :avatar %></td>
+            <td><%= c.file_field :avatar, id: :avatar, class: "form-control", required:true %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <% if !c.object.image.present? %>
+                <span class="fa fa-file place-holder-image"></span>
+                <%= image_tag '', id: :avatar_preview %>
+              <%else%>
+                <%= image_tag c.object.image_url(:thumb), id: :avatar_preview %>
+              <% end %>
+            </td>
+          </tr>
+          <% %w[x y w h].each do |attribute| %>
+            <%= c.hidden_field "avatar_crop_#{attribute}", id:"avatar_crop_#{attribute}" %>
+          <% end %>
+          <tr>
+            <td class="col-6"></td>
+            <td class="col-6"><%= c.submit "Registreer", class:"btn btn-primary" %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end -%>
+  <% else %>
+    <div class="text-center">
+     Je dient lid te zijn om een onderneming toe te kunnen voegen.<br />Gelieve <a class="highlight" href="/sessions/login">je in te loggen</a> of <a class="highlight" href="/users/new">je te registreren</a>.
+    </div>
+  <% end -%>
+</div>
+
+
+<!-- Modal -->
+<div id="upload-modal" class="modal fade" data-keyboard="false" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Crop Image</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <img id="image" width="100%" src="" alt="Logo">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <input type="button" class="btn btn-primary" id="CropButton" value="Opslaan" data-bs-dismiss="modal"></button>
+        <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

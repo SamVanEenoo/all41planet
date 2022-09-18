@@ -1,208 +1,50 @@
 <div id="sign-up">
-<h2 class="text-center margin-bottom-md margin-top-sm">Registreer</h2>
+  <h2 class="text-center margin-bottom-md margin-top-sm">Persoonlijke gegevens</h2>
 
-  <%= form_for @user, local: true, data: { turbo: false }, controller: 'users', action:'create' do |f| %>
-    <div class="sign-up-section">
-      <table class="table borderless">
-        <thead>
-          <tr>
-            <th colspan="2">
-              <h4>Personal data</h4>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="col-6"><%= f.label :first_name %></td>
-            <td class="col-6"><%= f.text_field :first_name, required:true %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :last_name %></td>
-            <td><%= f.text_field :last_name, required:true %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :email %></td>
-            <td><%= f.text_field :email, required:true %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :password %></td>
-            <td><%= f.password_field :password, required:true %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :password_confirmation %></td>
-            <td><%= f.password_field :password_confirmation, required:true %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :avatar %></td>
-            <td><%= f.file_field :avatar, id: :avatar, class: "form-control", required:true %></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <% if !f.object.image.present? %>
-                <span class="fa fa-file place-holder-image"></span>
-                <%= image_tag '', id: :avatar_preview %>
-              <%else%>
-                <%= image_tag f.object.image_url(:thumb), id: :avatar_preview %>
-              <% end %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div id="add-company" class="sign-up-section <% if params[:company] %> d-none<% end %>">
-      <table class="table borderless">
-        <tbody>
-          <h4>+ Add company</h4>
-        </tbody>
-      </table>
-    </div>
-
-
-    <div id="company-body" class="sign-up-section <% unless params[:company] %> d-none<% end %>">
-      <table class="table borderless">
-        <thead id="company-header">
-          <tr>
-            <th colspan="2">
-              <h4 id="company-title">
-                Company data
-                <div id="delete-company">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-                  </svg>
-                </div>
-              </h4>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <%= f.fields_for :company do |c| %>
-            <% if params[:company] %>
-              <%= c.hidden_field "show_company", id:"show_company", value: true %>
-            <% else %>
-              <%= c.hidden_field "show_company", id:"show_company", value: false %>
-            <% end -%>
-            <tr>
-              <td class="col-6"><%= c.label :company_name %></td>
-              <td class="col-6"><%= c.text_field :name, id: :company_name  %></td>
-            </tr>
-            <tr>
-              <td><%= c.label :vat_number %></td>
-              <td><%= c.text_field :vat_number, id: :company_vat_number %></td>
-            </tr>
-            <tr>
-              <td><%= c.label :company_website %></td>
-              <td><%= c.text_field :website, id: :company_website %></td>
-            </tr>
-            <tr>
-              <td><%= c.label :company_logo %></td>
-              <td><%= c.file_field :company_logo, id: :company_logo, class: "form-control" %></td>
-            </tr>
-            <tr>
-              <td><%= c.label :percentage %><br /><div class="small-description">Het percentage van dividend en/of meerwaarde op aandelen die je wil doneren aan All41planet</div></td>
-              <td><%= c.number_field :percentage, id: :company_percentage, value:"2", min:"1", max:"100", step:".1" %>%</td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>
-                <% if !f.object.image.present? %>
-                  <span class="fa fa-file place-holer-image"></span>
-                  <%= image_tag '', id: :company_logo_preview %>
-                <%else%>
-                  <%= image_tag c.object.image_url(:thumb), id: :company_logo_preview %>
-                <% end %>
-              </td>
-            </tr>
-            <% %w[x y w h].each do |attribute| %>
-              <%= c.hidden_field "company_logo_crop_#{attribute}", id:"company_logo_crop_#{attribute}" %>
-            <% end %>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-
-
-
-    <div id="add-project" class="sign-up-section <% if params[:project] %> d-none<% end %>">
-      <table class="table borderless">
-        <tbody>
-          <h4>+ Add project</h4>
-        </tbody>
-      </table>
-    </div>
-
-    <div id="project-body" class="sign-up-section <% unless params[:company] %> d-none<% end %>">
-      <table class="table borderless">
-        <thead id="project-header">
-          <tr>
-            <th colspan="2">
-              <h4 id="company-title">
-                Project data
-                <span id="delete-project">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-                  </svg>
-                </span>
-              </h4>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <%= f.fields_for :project do |pr| %>
-            <% if params[:project] %>
-              <%= pr.hidden_field "show_project", id:"show_project", value: true %>
-            <% else %>
-              <%= pr.hidden_field "show_project", id:"show_project", value: false %>
-            <% end -%>
-            <tr>
-              <td class="col-6"><%= pr.label :project_name %></td>
-              <td class="col-6"><%= pr.text_field :name %></td>
-            </tr>
-            <tr>
-              <td><%= pr.label :description, id: :project_description %></td>
-              <td><%= pr.text_area :description %></td>
-            </tr>
-            <tr>
-              <td><%= pr.label :climate_advantage, id: :project_climate_advantage %></td>
-              <td><%= pr.text_area :climate_advantage %></td>
-            </tr>
-            <tr>
-              <td><%= pr.label :project_website, id: :project_website %></td>
-              <td><%= pr.text_field :website %></td>
-            </tr>
-            <tr>
-              <td><%= pr.label :project_logo %></td>
-              <td><%= pr.file_field :project_logo, id: :project_logo, class: "form-control" %></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>
-                <% if !f.object.image.present? %>
-                  <span class="fa fa-file place-holer-image"></span>
-                  <%= image_tag '', id: :project_logo_preview %>
-                <%else%>
-                  <%= image_tag c.object.image_url(:thumb), id: :project_logo_preview %>
-                <% end %>
-              </td>
-            </tr>
-            <% %w[x y w h].each do |attribute| %>
-              <%= pr.hidden_field "project_logo_crop_#{attribute}", id:"project_logo_crop_#{attribute}" %>
-            <% end %>
-          <% end %>
-          <% %w[x y w h].each do |attribute| %>
-            <%= f.hidden_field "avatar_crop_#{attribute}", id:"avatar_crop_#{attribute}" %>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-
-
+  <%= form_for @user, local: true, data: { turbo: false }, controller: 'users', action:'create' do |u| %>
     <table class="table borderless">
       <tbody>
         <tr>
+          <td class="col-6"><%= u.label :first_name %></td>
+          <td class="col-6"><%= u.text_field :first_name, required:true %></td>
+        </tr>
+        <tr>
+          <td><%= u.label :last_name %></td>
+          <td><%= u.text_field :last_name, required:true %></td>
+        </tr>
+        <tr>
+          <td><%= u.label :email %></td>
+          <td><%= u.text_field :email, required:true %></td>
+        </tr>
+        <tr>
+          <td><%= u.label :password %></td>
+          <td><%= u.password_field :password, required:true %></td>
+        </tr>
+        <tr>
+          <td><%= u.label :password_confirmation %></td>
+          <td><%= u.password_field :password_confirmation, required:true %></td>
+        </tr>
+        <tr>
+          <td><%= u.label :avatar %></td>
+          <td><%= u.file_field :avatar, id: :avatar, class: "form-control", required:true %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <% if !u.object.image.present? %>
+              <span class="fa fa-file place-holder-image"></span>
+              <%= image_tag '', id: :avatar_preview %>
+            <%else%>
+              <%= image_tag u.object.image_url(:thumb), id: :avatar_preview %>
+            <% end %>
+          </td>
+        </tr>
+        <% %w[x y w h].each do |attribute| %>
+          <%= u.hidden_field "avatar_crop_#{attribute}", id:"avatar_crop_#{attribute}" %>
+        <% end %>
+        <tr>
           <td class="col-6"></td>
-          <td class="col-6"><%= f.submit "Registreer", class:"btn btn-primary" %></td>
+          <td class="col-6"><%= u.submit "Registreer", class:"btn btn-primary" %></td>
         </tr>
       </tbody>
     </table>

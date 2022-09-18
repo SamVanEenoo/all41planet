@@ -1,15 +1,22 @@
 class HomeController < ApplicationController
 
   def index
-    render :index
+    if current_user
+      redirect_to "/lists"
+    else
+      redirect_to "/home"
+    end
+  end
+
+  def home
   end
 
   def lists
     @users = User.all
     @last_5_users = @users.last(5)
-    @company_users = CompanyUser.all
-    @last_5_company_users = @company_users.last(5)
-    @projects = Project.all
+    @companies = Company.all
+    @last_5_companies = @companies.last(5)
+    @projects = Project.where(approved: true)
     @last_5_projects = @projects.last(5)
   end
 

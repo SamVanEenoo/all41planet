@@ -22,16 +22,24 @@
     <% end %>
 
     <div id="main-nav">
-      <a href="/">
-        <div class="main-nav-item <%= active_class('/') %>">
-          <%= image_tag("home.png", id:"home") %>
-        </div>
-      </a>
-      <a href="/lists">
-        <div class="main-nav-item <%= active_class('/lists') %>">
-          <%= image_tag("lists.png", id:"lists") %>
-        </div>
-      </a>
+      <% if current_user %>
+        <a href="/">
+          <div class="main-nav-item <%= active_class('/lists') %>">
+            <%= image_tag("home.png", id:"home") %>
+          </div>
+        </a>
+      <% else %>
+        <a href="/">
+          <div class="main-nav-item <%= active_class('/home') %>">
+            <%= image_tag("home.png", id:"home") %>
+          </div>
+        </a>
+        <a href="/lists">
+          <div class="main-nav-item <%= active_class('/lists') %>">
+            <%= image_tag("lists.png", id:"lists") %>
+          </div>
+        </a>
+      <% end %>
       <a href="/articles">
         <div class="main-nav-item <%= active_class('/articles') %>">
           <%= image_tag("articles-icon.png", id:"lists") %>
@@ -57,6 +65,7 @@
                 </div>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="user-menu">
                   <li><%= link_to "Profile", user_path(current_user), class:"dropdown-item" %></li>
+                  <li><a class="dropdown-item" href="#"><%= I18n.locale %></a></li>
                   <li><a class="dropdown-item" href="/sessions/logout">Logout</a></li>
                 </ul>
               </span>

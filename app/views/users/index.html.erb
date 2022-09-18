@@ -4,15 +4,15 @@
     <!-- INFLUENCERS -->
     <div id="influencers" class="col-12 margin-bottom-lg">
       <table>
-        <% @members.each do |user| %>
+        <% @users.each do |user| %>
           <tr>
             <td>
-              <%= link_to member_path(id: user.id) do %>
+              <%= link_to user_path(id: user.id) do %>
                 <div class="image"><%= image_tag user.avatar %></div>
               <% end -%>
             </td>
             <td class="width-100">
-              <%= link_to member_path(id: user.id) do %>
+              <%= link_to user_path(id: user.id) do %>
                 <div class="name"><%= user["first_name"] %> <%= user["last_name"] %></div>
               <% end -%>
             </td>
@@ -21,7 +21,7 @@
       </table>
 
 
-      <%= will_paginate @members %>
+      <%= will_paginate @users %>
     </div>
   </div>
 </div>
