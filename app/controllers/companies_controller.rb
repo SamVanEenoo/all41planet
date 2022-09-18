@@ -31,10 +31,10 @@ class CompaniesController < ApplicationController
   end
 
   def sanitize_fields_params
-    avatar_crop_x = params[:user][:avatar_crop_x]
-    avatar_crop_y = params[:user][:avatar_crop_y]
-    avatar_crop_w = params[:user][:avatar_crop_w]
-    avatar_crop_h = params[:user][:avatar_crop_h]
+    avatar_crop_x = params[:company][:avatar_crop_x]
+    avatar_crop_y = params[:company][:avatar_crop_y]
+    avatar_crop_w = params[:company][:avatar_crop_w]
+    avatar_crop_h = params[:company][:avatar_crop_h]
   end
 
   private

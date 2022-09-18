@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :sanitize_fields_params, only: [:create,:update]
 
   def index
-    @projects = Project.where(approved:true).paginate(page: params[:page], per_page: 20)
+    @projects = Project.where(state:"Approved").paginate(page: params[:page], per_page: 20)
   end
 
   def new

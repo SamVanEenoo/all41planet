@@ -1,25 +1,54 @@
-<% if current_user.id == @user.id %>
-<div id="member">
-<a href="<%= edit_user_path(@user) %>"><button class="btn btn-sm btn-primary">Edit profile</button></a>
-</div>
+<% if current_user&.id == @user.id %>
+  <div id="member">
+  <a href="<%= edit_user_path(@user) %>"><button class="btn btn-sm btn-primary">Edit profile</button></a>
+  </div>
 
-<br>
-<% end %>
+  <br>
+  <% end %>
 
-<div id="member">
-  <h2><%= @user[:first_name] %> <%= @user[:last_name] %></h2>
-  <table>
+  <div id="member">
+    <h2><%= @user[:first_name] %> <%= @user[:last_name] %></h2>
+    <table>
+      <tbody>
+        <tr>
+          <td class="image-wrapper">
+            <div class="image"><%= image_tag @user.avatar %></div>
+          </td>
+          <td class="content width-100">
+            <% if current_user.id == @user.id %>
+              <%= @user[:email] %>
+            <% end -%>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <% if !@projects.nil? %>
+  <h4>Projects</h4>
+
+  <table class="table margin-bottom-md">
     <tbody>
       <tr>
-        <td class="image-wrapper">
-          <div class="image"><%= image_tag @user.avatar %></div>
-        </td>
-        <td class="content width-100">
-          <% if current_user.id == @user.id %>
-            <%= @user[:email] %>
-          <% end -%>
-        </td>
+        <% @projects.each do |project| %>
+          <td><%= project[:name] %></td>
+          <td class="state-<%= project[:state].downcase.gsub(" ","-") %>"><%= project[:state] %></td>
+        <% end -%>
       </tr>
     </tbody>
   </table>
-</div>
+<% end %>
+
+<% if @user_companies.count != 0 %>
+  <h4>Companies</h4>
+
+  <table class="table margin-bottom-md">
+    <tbody>
+      <tr>
+        <% @user_companies.each do |user_company| %>
+          <td><%= user_company.company[:name] %></td>
+        <% end -%>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

@@ -11,6 +11,10 @@ $projects-color-hover: #a7d114;
 $influencers-color: #52c8c6;
 $influencers-color-hover: #5ecdca;
 
+$danger-color: #bc0505;
+$warning-color: #bc8205;
+$success-color: #05bc09;
+
 #sign-up {
   max-width: 800px;
   margin-left:auto;
@@ -213,3 +217,17 @@ $influencers-color-hover: #5ecdca;
   }
 }
 
+
+#member {
+  margin-bottom: 30px;
+}
+
+.state-approved {
+  color: $success-color;
+}
+.state-in-review {
+  color: $warning-color;
+}
+.state-declined {
+  color: $danger-color;
+}
