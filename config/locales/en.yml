@@ -30,4 +30,29 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      article:
+        title: "Title"
+        image: "Image"
+        body: "Content"
+  articles:
+    new:
+      new_article: "New article"
+      body: "Content"
+      title: "Title"
+      save: "Save"
+  home:
+    lists:
+    add_company: "+ Add company"
+    add_project: "+ Add project proposal"
+    all_companies: "All companies"
+    all_members: "All members"
+    all_projects: "All projects"
+    collected: "collected"
+    companies: "Companies"
+    members: "Members"
+    project: "Project"
+    projects: "Projects"
+  layouts:
+    application:

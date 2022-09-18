@@ -5,26 +5,26 @@
       <thead>
         <tr>
           <th colspan="2">
-            <h4>Nieuw artikel</h4>
+            <h4><%= t('articles.new.new_article') %></h4>
           </th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="col-6"><%= f.label :Title %></td>
-          <td class="col-6"><%= f.text_field :title, autofocus: true, placeholder:"Titel" %></td>
+          <td class="col-6"><%= f.label :title %></td>
+          <td class="col-6"><%= f.text_field :title, autofocus: true, placeholder:t('articles.new.title') %></td>
         </tr>
         <tr>
-          <td class="col-6"><%= f.label :Image %></td>
+          <td class="col-6"><%= f.label :image %></td>
           <td class="col-6"><%= f.file_field :image_data %></td>
         </tr>
         <tr>
-          <td class="col-6"><%= f.label :Body %></td>
-          <td class="col-6"><%= f.text_area :body, placeholder:"Body" %></td>
+          <td class="col-6"><%= f.label :body %></td>
+          <td class="col-6"><%= f.text_area :body, placeholder:t('articles.new.body') %></td>
         </tr>
         <tr>
           <td class="col-6"></td>
-          <td class="col-6"><%= f.submit "Registreer", class:"btn btn-primary" %></td>
+          <td class="col-6"><%= f.submit t('articles.new.save'), class:"btn btn-primary" %></td>
         </tr>
       </tbody>
     </table>

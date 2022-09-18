@@ -1,0 +1,78 @@
+<div id="sign-up">
+<h2 class="text-center margin-bottom-md margin-top-sm">Project</h2>
+
+  <% if current_user %>
+    <%= form_for @project, local: true, data: { turbo: false }, controller: 'projects', action:'create' do |pr| %>
+      <table class="table borderless">
+        <tbody>
+          <tr>
+            <td class="col-6"><%= pr.label :name %></td>
+            <td class="col-6"><%= pr.text_field :name %></td>
+          </tr>
+          <tr>
+            <td><%= pr.label :description, id: :description %></td>
+            <td><%= pr.text_area :description %></td>
+          </tr>
+          <tr>
+            <td><%= pr.label :climate_advantage, id: :climate_advantage %></td>
+            <td><%= pr.text_area :climate_advantage %></td>
+          </tr>
+          <tr>
+            <td><%= pr.label :website, id: :website %></td>
+            <td><%= pr.text_field :website %></td>
+          </tr>
+          <tr>
+            <td><%= pr.label :avatar %></td>
+            <td><%= pr.file_field :avatar, id: :avatar, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <% if !pr.object.image.present? %>
+                <span class="fa fa-file place-holer-image"></span>
+                <%= image_tag '', id: :avatar %>
+              <%else%>
+                <%= image_tag pr.object.image_url(:thumb), id: :avatar %>
+              <% end %>
+            </td>
+          </tr>
+          <% %w[x y w h].each do |attribute| %>
+            <%= pr.hidden_field "avatar_crop_#{attribute}", id:"avatar_crop_#{attribute}" %>
+          <% end %>
+
+          <tr>
+            <td class="col-6"></td>
+            <td class="col-6"><%= pr.submit "Project voorstellen toevoegen", class:"btn btn-primary" %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end -%>
+  <% else %>
+    <div class="text-center">
+     Enkel leden kunnen een projectvoorstel indienen. Gelieve <a class="highlight" href="/sessions/login">je in te loggen</a> of <a class="highlight" href="/users/new">je te registreren</a>.
+    </div>
+  <% end %>
+</div>
+
+
+<!-- Modal -->
+<div id="upload-modal" class="modal fade" data-keyboard="false" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Crop Image</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <img id="image" width="100%" src="" alt="Logo">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <input type="button" class="btn btn-primary" id="CropButton" value="Opslaan" data-bs-dismiss="modal"></button>
+        <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

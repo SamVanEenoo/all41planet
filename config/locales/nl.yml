@@ -1,0 +1,27 @@
+nl:
+  activerecord:
+    attributes:
+      article:
+        title: "Titel"
+        image: "Afbeelding"
+        body: "Tekst"
+  articles:
+    new:
+      new_article: "Nieuw artikel"
+      body: "Tekst"
+      title: "Titel"
+      save: "Opslaan"
+  home:
+    lists:
+      add_company: "+ Onderneming toevoegen"
+      add_project: "+ Projectvoorstel indienen"
+      all_companies: "Alle ondernemers"
+      all_members: "Alle leden"
+      all_projects: "Alle projecten"
+      collected: "ingezameld"
+      companies: "Ondernemingen"
+      members: "Leden"
+      project: "Project"
+      projects: "Projecten"
+  layouts:
+    application:

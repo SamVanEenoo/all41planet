@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   end
 
   get "lists", to:"home#lists"
+  get "home", to:"home#home"
 
   root "home#index"
 end

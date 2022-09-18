@@ -4,20 +4,20 @@
 
   <!-- COMPANIES -->
   <div id="companies" class="col-lg-4 col-md-6 margin-bottom-lg">
-    <h2 class="text-center margin-bottom-md">&euro;1.000 ingezameld</h2>
+    <h2 class="text-center margin-bottom-md">&euro;1.000 <%= t('home.lists.collected') %></h2>
 
     <div class="company padding-md margin-bottom-sm">
-      <h3 class="text-center">Ondernemers</h3>
+      <h3 class="text-center"><%= t('home.lists.companies') %></h3>
     </div>
 
     <table>
-      <% @company_users.each do |company_user| %>
+      <% @companies.each do |company| %>
       <tr>
         <td>
           <div class="image">
-            <% if !company_user.company.avatar.nil? %>
-              <%= link_to(company_user.company) do %>
-                <%= image_tag company_user.company.avatar %>
+            <% if !company.avatar.nil? %>
+              <%= link_to(company) do %>
+                <%= image_tag company.avatar %>
               <% end -%>
             <% else %>
               <img src="https://media-exp1.licdn.com/dms/image/C4D0BAQFyvnowthnfJQ/company-logo_200_200/0/1607441534777?e=2159024400&v=beta&t=NsLl0AniRT7a3w5UXDf4OTDbkgxAC28LS3PQnNt3pJ4" />
@@ -25,10 +25,9 @@
           </div>
         </td>
         <td class="width-100">
-          <%= link_to(company_user.company) do %>
+          <%= link_to(company) do %>
             <div class="name">
-              <%= company_user.user["first_name"] %> <%= company_user.user["last_name"] %><br />
-              <em><%= company_user.company["name"] %></em>
+              <%= company["name"] %>
             </div>
           <% end -%>
         </td>
@@ -38,33 +37,33 @@
 
     <a href="/enterpreneurs">
       <div class="company padding-sm margin-bottom-sm text-center">
-        Alle ondernemers
+        <%= t('home.lists.all_companies') %>
       </div>
     </a>
 
     <div class="text-center">
-      <%= link_to "All41Planet ondernemer worden?", new_user_path("company": true), data: { turbolinks: false } %>
+      <%= link_to t('home.lists.add_company'), new_company_path, data: { turbolinks: false } %>
     </div>
   </div>
 
   <!-- INFLUENCERS -->
   <div id="influencers" class="col-lg-4 col-md-6 margin-bottom-lg">
-    <h2 class="text-center margin-bottom-md"><%= @users.count %> leden</h2>
+    <h2 class="text-center margin-bottom-md"><%= @users.count %> <%= t('home.lists.members').downcase %></h2>
 
     <div class="influencer padding-md margin-bottom-sm">
-      <h3 class="text-center">Leden</h3>
+      <h3 class="text-center"><%= t('home.lists.members') %></h3>
     </div>
 
     <table>
       <% @last_5_users.each do |user| %>
         <tr>
           <td>
-            <%= link_to member_path(id: user.id) do %>
+            <%= link_to user_path(id: user.id) do %>
               <div class="image"><%= image_tag user.avatar %></div>
             <% end -%>
           </td>
           <td class="width-100">
-            <%= link_to member_path(id: user.id) do %>
+            <%= link_to user_path(id: user.id) do %>
               <div class="name"><%= user["first_name"] %> <%= user["last_name"] %></div>
             <% end -%>
           </td>
@@ -72,15 +71,17 @@
       <% end -%>
     </table>
 
-    <a href="/members">
+    <a href="/users">
       <div class="influencer padding-sm margin-bottom-sm text-center">
-        Alle leden
+        <%= t('home.lists.all_members') %>
       </div>
     </a>
 
-    <div class="text-center">
-      <%= link_to "All41Planet lid worden?", new_user_path, data: { turbolinks: false } %>
-    </div>
+    <% unless current_user %>
+      <div class="text-center">
+        <%= link_to "+ All41Planet lid worden", new_user_path, data: { turbolinks: false } %>
+      </div>
+    <% end %>
   </div>
 
   <!-- PROJECTS -->
@@ -88,10 +89,17 @@
   <div id="projects" class="d-lg-none col-md-3"></div>
 
   <div id="projects" class="col-lg-4 col-md-6 margin-bottom-lg">
-    <h2 class="text-center margin-bottom-md"><%= @projects.count %> projecten</h2>
+    <h2 class="text-center margin-bottom-md">
+      <%= @projects.count %>
+      <% if @projects.count == 1 %>
+        <%= t('home.lists.project').downcase %>
+      <% else %>
+        <%= t('home.lists.projects').downcase %>
+      <% end -%>
+    </h2>
 
     <div class="project padding-md margin-bottom-sm">
-      <h3 class="text-center">Projecten</h3>
+      <h3 class="text-center"><%= t('home.lists.projects') %></h3>
     </div>
 
     <table>
@@ -120,12 +128,12 @@
 
     <a href="/projects">
       <div class="project padding-sm margin-bottom-sm text-center">
-        Alle projecten
+        <%= t('home.lists.all_projects') %>
       </div>
     </a>
 
     <div class="text-center">
-      <%= link_to "All41Planet projectaanvraag indienen?", new_user_path("project": true), data: { turbolinks: false } %>
+      <%= link_to t('home.lists.add_project'), new_project_path, data: { turbolinks: false } %>
     </div>
   </div>
 
