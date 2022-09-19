@@ -3,16 +3,16 @@
 
   <div id="companies" class="col-12 margin-bottom-lg">
     <table>
-      <% @enterpreneurs.each do |user| %>
+      <% @companies.each do |company| %>
         <tr>
           <td>
-            <%= link_to user_path(id: user.user.id) do %>
-              <div class="image"><%= image_tag user.user.avatar %></div>
+            <%= link_to company_path(company.id) do %>
+              <div class="image"><%= image_tag company.avatar %></div>
             <% end -%>
           </td>
           <td class="width-100">
-            <%= link_to user_path(id: user.user.id) do %>
-              <div class="name"><%= user.user["first_name"] %> <%= user.user["last_name"] %></div>
+            <%= link_to company_path(company.id) do %>
+              <div class="name"><%= company["name"] %></div>
             <% end -%>
           </td>
         </tr>

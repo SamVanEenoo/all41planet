@@ -43,16 +43,27 @@ en:
       title: "Title"
       save: "Save"
   home:
+    home:
+      companies: "Companies"
+      companies_description_html: '<span class="strong">All 4 1 planet entrepreneurs</span> are entrepreneurs who donate a small percentage of their profits (when dividends are paid or shares are sold) to invest in our All 4 1 planet projects. For this, they receive attention on our platform, as well as the eternal thanks and the unconditional support of our members in return. Of course, they also have a big stake in deciding which projects to invest in.'
+      companies_subscription: "Become an All41Planet entrepreneur?"
+      members: "Members"
+      members_description_html: '<span class="strong">ANYONE</span> can become an <span class="strong">All 4 1 planet member</span>. Members help decide which projects are supported and how much money goes to them. They support our entrepreneurs and if they want, they can also contribute themselves.'
+      members_subscription: "Become an All41Planet member?"
+      projects: "Projects"
+      projects_description_html: '<span class="strong">All 4 1 planet projects</span> projects that contribute to a better climate. Anyone can submit a project application but it is our entrepreneurs and members who decide which projects are selected and what they receive.'
+      projects_subscription: "Submit an All41Planet project?"
+      saving_the_planet_title: "SAVING THE PLANET TOGETHER"
     lists:
-    add_company: "+ Add company"
-    add_project: "+ Add project proposal"
-    all_companies: "All companies"
-    all_members: "All members"
-    all_projects: "All projects"
-    collected: "collected"
-    companies: "Companies"
-    members: "Members"
-    project: "Project"
-    projects: "Projects"
+      add_company: "+ Add company"
+      add_project: "+ Add project proposal"
+      all_companies: "All companies"
+      all_members: "All members"
+      all_projects: "All projects"
+      collected: "collected"
+      companies: "Companies"
+      members: "Members"
+      project: "Project"
+      projects: "Projects"
   layouts:
     application:

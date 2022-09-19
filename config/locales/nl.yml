@@ -12,10 +12,21 @@ nl:
       title: "Titel"
       save: "Opslaan"
   home:
+    home:
+      companies: "Ondernemers"
+      companies_description_html: '<span class="strong">All 4 1 planet-ondernemers</span> zijn ondernemers die een klein percentage van hun winst (bij uitkering van dividenden of verkoop van aandelen) afgeven om te investeren in onze All 4 1 planet-projecten. Daarvoor krijgen ze aandacht op ons platform, maar ook de eeuwige dank en de onverwaardelijke steun van onze leden voor terug. Uiteraard hebben ze ook een groot aandeel in het beslissen in welke projecten er geïnvesteerd wordt.'
+      companies_subscription: "All41Planet ondernemer worden?"
+      members: "Leden"
+      members_description_html: '<span class="strong">IEDEREEEN</span> kan een <span class="strong">All 4 1 planet-lid</span> worden. Leden bepalen mee welke projecten gesteund worden en hoeveel geld er naar toe gaat. Ze steunen onze ondernemers en mochten ze willen, kunnen ze ook zelf een steentje bijdragen.'
+      members_subscription: "All41Planet lid worden?"
+      projects: "Projecten"
+      projects_description_html: '<span class="strong">All 4 1 planet-projecten</span> projecten die bijdragen aan een beter klimaat. Iedereen kan een projectaanvraag indienen maar het zijn onze ondernemers en leden die bepalen welke projecten geselecteerd worden en welke bedrag er naar toe gaat.'
+      projects_subscription: "All41Planet project indienen?"
+      saving_the_planet_title: 'HET KLIMAAT REDDEN DOEN WE SAMEN'
     lists:
       add_company: "+ Onderneming toevoegen"
       add_project: "+ Projectvoorstel indienen"
-      all_companies: "Alle ondernemers"
+      all_companies: "Alle ondernemingen"
       all_members: "Alle leden"
       all_projects: "Alle projecten"
       collected: "ingezameld"
