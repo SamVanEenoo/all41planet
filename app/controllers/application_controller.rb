@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
 
   def extract_locale
     parsed_locale = request.host.split('.').last
+    puts "parsed_locale: #{parsed_locale}"
     if "be"
       "nl"
     else
