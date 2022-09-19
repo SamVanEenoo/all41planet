@@ -29,12 +29,12 @@
 
   <table class="table margin-bottom-md">
     <tbody>
-      <tr>
-        <% @projects.each do |project| %>
+      <% @projects.each do |project| %>
+        <tr>
           <td><%= project[:name] %></td>
           <td class="state-<%= project[:state].downcase.gsub(" ","-") %>"><%= project[:state] %></td>
-        <% end -%>
-      </tr>
+        </tr>
+      <% end -%>
     </tbody>
   </table>
 <% end %>
@@ -44,11 +44,11 @@
 
   <table class="table margin-bottom-md">
     <tbody>
-      <tr>
-        <% @user_companies.each do |user_company| %>
-          <td><%= user_company.company[:name] %></td>
-        <% end -%>
-      </tr>
+      <% @user_companies.each do |user_company| %>
+        <tr>
+            <td><%= user_company.company[:name] %></td>
+        </tr>
+      <% end -%>
     </tbody>
   </table>
 <% end %>

@@ -27,15 +27,15 @@ class UsersController < ApplicationController
 
     if params[:user][:avatar].nil?
       puts "A valid profile picture is required."
-      flash.now[:alert] = "A valid profile picture is required."
+      flash.now[:danger] = "A valid profile picture is required."
       render :new
     elsif !accepted_formats.include?(File.extname(params[:user][:avatar]).downcase)
       puts "Only images with an jpg, jpeg or png extension are accepted."
-      flash.now[:alert] = "Only images with an jpg, jpeg or png extension are accepted."
+      flash.now[:danger] = "Only images with an jpg, jpeg or png extension are accepted."
       render :new
     elsif !@user.save
       puts "Your passwords don't match. Please try again."
-      flash.now[:alert] = "Your passwords don't match. Please try again."
+      flash.now[:danger] = "Your passwords don't match. Please try again."
       render :new
     else
       session[:user_id] = @user.id

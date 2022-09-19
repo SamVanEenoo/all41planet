@@ -14,12 +14,6 @@
   </head>
 
   <body class="min-height-100">
-    <% flash.each do |type, msg| %>
-      <div id="flash-alert" class="alert alert-danger alert-dismissible fade show fixed-top" role="alert">
-        <%= msg %>
-        <button type="button" class="btn-close close-flash-alert" data-dismiss="alert" aria-label="Close"></button>
-      </div>
-    <% end %>
 
     <div id="main-nav">
       <% if current_user %>
@@ -47,7 +41,16 @@
       </a>
     </div>
 
+
+    <div class="container" id="main-content">
+      <% flash.each do |type, msg| %>
+        <div id="flash-alert" class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
+          <%= msg %>
+          <a href="#" class="close close-flash-alert" data-dismiss="alert" aria-label="close">&times;</a>
+        </div>
+      <% end %>
     <div id="content-wrapper" class="container">
+
 
       <div class="container margin-bottom-lg margin-top-md">
         <div class="row">
@@ -79,6 +82,7 @@
           </div>
         </div>
       </div>
+
 
 
       <div class="container" id="main-content">

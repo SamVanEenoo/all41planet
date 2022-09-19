@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 $enterpreneurs-color: #057cbc;
-$enterpreneurs-color-hover: #0e9bcb;
+$enterpreneurs-color-hover: #1881ba;
 
 $projects-color: #9cce0b;
 $projects-color-hover: #a7d114;
@@ -14,15 +14,16 @@ $influencers-color-hover: #5ecdca;
 $danger-color: #bc0505;
 $warning-color: #bc8205;
 $success-color: #05bc09;
+$info-color: #057cbc;
 
 #sign-up {
-  max-width: 800px;
-  margin-left:auto;
-  margin-right: auto;
   background: #FFF;
   border-radius: 4px;
   padding: 15px;
   box-shadow: 0 0 4px 0 #AAA;
+  max-width: 800px;
+  margin-left:auto;
+  margin-right: auto;
 }
 
 #companies {
@@ -230,4 +231,31 @@ $success-color: #05bc09;
 }
 .state-declined {
   color: $danger-color;
+}
+
+.close-flash-alert {
+  color: #FFF;
+  right: 15px;
+  position: absolute;
+  font-size: 22px;
+  margin-top: -4px;
+}
+
+.close-flash-alert:hover {
+  color: #CCC;
+}
+
+.alert-danger {
+  color: #FFF !important;
+  background: $danger-color !important;
+}
+
+.alert-warning {
+  color: #FFF !important;
+  background: $warning-color !important;
+}
+
+.alert-info {
+  color: #FFF !important;
+  background: $info-color !important;
 }

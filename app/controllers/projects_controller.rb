@@ -28,7 +28,8 @@ class ProjectsController < ApplicationController
     @project[:user_id] = current_user.id
     @project.save
 
-    redirect_to root_path
+    flash[:info] = "Je aanvraag is in behandeling. We laten iets weten van zodra deze is goedgekeurd."
+    redirect_to user_path(current_user.id)
   end
 
   def sanitize_fields_params
