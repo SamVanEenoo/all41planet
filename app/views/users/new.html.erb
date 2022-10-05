@@ -1,5 +1,5 @@
 <div id="sign-up">
-  <h2 class="text-center margin-bottom-md margin-top-sm">Persoonlijke gegevens</h2>
+  <h2 class="text-center margin-bottom-md margin-top-sm"><%= t('users.new.personnal_data') %></h2>
 
   <%= form_for @user, local: true, data: { turbo: false }, controller: 'users', action:'create' do |u| %>
     <table class="table borderless">

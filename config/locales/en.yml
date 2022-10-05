@@ -36,6 +36,8 @@ en:
         title: "Title"
         image: "Image"
         body: "Content"
+      user:
+        first_name: "First name"
   articles:
     new:
       new_article: "New article"
@@ -45,10 +47,10 @@ en:
   home:
     home:
       companies: "Companies"
-      companies_description_html: '<span class="strong">All 4 1 planet entrepreneurs</span> are entrepreneurs who donate a small percentage of their profits (when dividends are paid or shares are sold) to invest in our All 4 1 planet projects. For this, they receive attention on our platform, as well as the eternal thanks and the unconditional support of our members in return. Of course, they also have a big stake in deciding which projects to invest in.'
+      companies_description_html: '<span class="strong">All 4 1 planet entrepreneurs</span> are entrepreneurs who donate a small percentage of their profits (when dividends are paid or shares are sold) to invest in our All 4 1 planet projects. For this, they receive attention on our platform, as well as the eternal thanks and the unconditional support of our members in return. Of course, they also have a big stake in deciding which projects to invest in.<br><br>Why should you choose to use our platform and not just donate money directly to an organisation?<br/><br /><ol><li>Free advertisement</li><li>If we receive money from multiple enterpreneurs, we can invest in bigger projects and make a better impact</li></ol>'
       companies_subscription: "Become an All41Planet entrepreneur?"
       members: "Members"
-      members_description_html: '<span class="strong">ANYONE</span> can become an <span class="strong">All 4 1 planet member</span>. Members help decide which projects are supported and how much money goes to them. They support our entrepreneurs and if they want, they can also contribute themselves.'
+      members_description_html: '<span class="strong">ANYONE</span> can become an <span class="strong">All 4 1 planet member</span>. Members help decide which projects are supported and what to invest in them. They support our entrepreneurs and if they want, they can also contribute themselves.'
       members_subscription: "Become an All41Planet member?"
       projects: "Projects"
       projects_description_html: '<span class="strong">All 4 1 planet projects</span> projects that contribute to a better climate. Anyone can submit a project application but it is our entrepreneurs and members who decide which projects are selected and what they receive.'
@@ -60,6 +62,7 @@ en:
       all_companies: "All companies"
       all_members: "All members"
       all_projects: "All projects"
+      become_member: "+ Become an All41Planet member       "
       collected: "collected"
       companies: "Companies"
       members: "Members"
