@@ -5,6 +5,11 @@ nl:
         title: "Titel"
         image: "Afbeelding"
         body: "Tekst"
+      user:
+        first_name: "Voornaam"
+        last_name: "Familienaam"
+        email: "E-mail"
+        password: "Wachtwoord"
   articles:
     new:
       new_article: "Nieuw artikel"
@@ -29,6 +34,7 @@ nl:
       all_companies: "Alle ondernemingen"
       all_members: "Alle leden"
       all_projects: "Alle projecten"
+      become_member: "+ All41Planet lid worden"
       collected: "ingezameld"
       companies: "Ondernemingen"
       members: "Leden"
@@ -36,3 +42,6 @@ nl:
       projects: "Projecten"
   layouts:
     application:
+  users:
+    new:
+      personnal_data: "Persoonlijke gegevens"
