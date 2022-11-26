@@ -42,7 +42,9 @@ class UsersController < ApplicationController
       img = ImageProcessing::MiniMagick.source(params[:user][:avatar].path())
       avatar = img.crop("#{params[:user][:avatar_crop_w]}x#{params[:user][:avatar_crop_h]}+#{params[:user][:avatar_crop_x]}+#{params[:user][:avatar_crop_y]}")
             .resize_to_limit!(100, 100)
-      @user.avatar.attach(io: avatar, filename: "#{params[:user][:first_name]}_#{params[:user][:last_name]}.png", content_type: "image/png")
+      avatar = Cloudinary::Uploader.upload(avatar)
+      @user.avatar = avatar["secure_url"]
+      @user.save
 
       redirect_to root_path
     end
@@ -52,12 +54,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     if !params[:user][:avatar].nil?
+      puts "TEST 1"
       accepted_formats = [".jpg",".jpeg",".png"]
       if accepted_formats.include?(File.extname(params[:user][:avatar]).downcase)
+
         img = ImageProcessing::MiniMagick.source(params[:user][:avatar].path())
-        avatar = img.crop("#{params[:user][:avatar_crop_w]}x#{params[:user][:avatar_crop_h]}+#{params[:user][:avatar_crop_x]}+#{params[:user][:avatar_crop_y]}")
-              .resize_to_limit!(100, 100)
-        @user.avatar.attach(io: avatar, filename: "#{params[:user][:first_name]}_#{params[:user][:last_name]}.png", content_type: "image/png")
+        avatar = img.crop("#{params[:user][:avatar_crop_w]}x#{params[:user][:avatar_crop_h]}+#{params[:user][:avatar_crop_x]}+#{params[:user][:avatar_crop_y]}").resize_to_limit!(100, 100)
+        avatar = Cloudinary::Uploader.upload(avatar)
+        @user.avatar = avatar["secure_url"]
       end
       @user.save
     end

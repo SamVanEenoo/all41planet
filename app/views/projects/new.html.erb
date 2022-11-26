@@ -40,7 +40,6 @@
           <% %w[x y w h].each do |attribute| %>
             <%= pr.hidden_field "avatar_crop_#{attribute}", id:"avatar_crop_#{attribute}" %>
           <% end %>
-
           <tr>
             <td class="col-6"></td>
             <td class="col-6"><%= pr.submit "Project voorstellen toevoegen", class:"btn btn-primary" %></td>

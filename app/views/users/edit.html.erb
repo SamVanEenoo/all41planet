@@ -35,6 +35,9 @@
               <% end %>
             </td>
           </tr>
+          <% %w[x y w h].each do |attribute| %>
+            <%= f.hidden_field "avatar_crop_#{attribute}", id:"avatar_crop_#{attribute}" %>
+          <% end %>
           <tr>
             <td class="col-6"></td>
             <td class="col-6"><%= f.submit "Opslaan", class:"btn btn-primary" %></td>

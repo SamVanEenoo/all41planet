@@ -5,10 +5,11 @@ class ImageUploader < Shrine
   Attacher.validate do
     # You can add your image validations here ..
   end
-  
+
   Attacher.derivatives do |original|
     magick = ImageProcessing::MiniMagick.source(original)
     result = {}
+
     unless $logo_crop_x.blank?
       x = $logo_crop_x.to_f
       y = $logo_crop_y.to_f

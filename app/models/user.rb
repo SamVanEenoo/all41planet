@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   has_secure_password
-  has_one_attached :avatar
 
   attr_accessor :avatar_crop_x,
                 :avatar_crop_y,
